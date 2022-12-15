@@ -1,0 +1,33 @@
+.navBar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background: #23253A;
+    column-gap: 8vw;
+    font-size: 2.77vh;
+}
+
+.logo {
+    margin-top: 2.08vh;
+    margin-left: 2.08vh;
+    width: 4.72vh;
+    height: auto;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    column-gap: 3.2vw;
+}
+
+.list li {
+    display: inline-flex;
+    padding-bottom: 0.42vh;
+    border-bottom: 0.55vh solid #23253A;
+}
+
+.list li:hover {
+    color: #208CE5;
+    padding-bottom: 0.42vh;
+    border-bottom: 0.55vh solid #208CE5;
+}
