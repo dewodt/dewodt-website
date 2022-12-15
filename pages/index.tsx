@@ -8,7 +8,7 @@ export default function Home() {
         <title>Dewo</title>
         <link rel="shortcut icon" href="logo.ico" />
       </Head>
-      <NavBar />
+      <NavBar onPage={"home"}/>
     </>
   )
 }
