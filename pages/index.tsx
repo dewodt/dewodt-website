@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import NavBar from 'components/navbar';
+import Head from "next/head";
+import NavBar from "components/navbar";
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
         <title>Dewo</title>
         <link rel="shortcut icon" href="logo.ico" />
       </Head>
-      <NavBar onPage={"home"}/>
+      <NavBar onPage={"Home"} />
     </>
-  )
+  );
 }

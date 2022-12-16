@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -20,12 +24,12 @@ a {
   }
   body {
     color: white;
-    background: #23253A;
+    background: #23253a;
   }
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: 700;
-  src: url('../public/Inter.ttf');
+  src: url("../public/Inter.ttf");
 }
