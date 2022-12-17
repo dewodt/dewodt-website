@@ -5,9 +5,9 @@ export default function ContactButton({ items }: { items: string }) {
     return (
       <>
         <Link href="https://github.com/dewodt">
-          <div className="group flex h-[6vh] w-[6vh] items-center justify-center rounded-[1.39vh] bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] lg:h-[6.48vh] lg:w-[6.48vh]">
+          <div className="group flex h-[6vh] w-[6vh] items-center justify-center rounded-[1.39vh] bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] lg:h-[6.95vh] lg:w-[6.95vh]">
             <svg
-              className="w-[4vh] fill-[white] group-hover:fill-[#208ce5] lg:w-[4.17vh]"
+              className="w-[4vh] fill-[white] group-hover:fill-[#208ce5] lg:w-[4.63vh]"
               viewBox="0 0 496 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -21,9 +21,9 @@ export default function ContactButton({ items }: { items: string }) {
     return (
       <>
         <Link href="https://www.linkedin.com/in/dewantoro-triatmojo-601755195/">
-          <div className="group flex h-[6vh] w-[6vh] items-center justify-center rounded-[1.39vh] bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] lg:h-[6.48vh] lg:w-[6.48vh]">
+          <div className="group flex h-[6vh] w-[6vh] items-center justify-center rounded-[1.39vh] bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] lg:h-[6.95vh] lg:w-[6.95vh]">
             <svg
-              className="w-[4vh] fill-[white] group-hover:fill-[#208ce5] lg:w-[4.17vh]"
+              className="w-[4vh] fill-[white] group-hover:fill-[#208ce5] lg:w-[4.63vh]"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
             >
@@ -37,9 +37,9 @@ export default function ContactButton({ items }: { items: string }) {
     return (
       <>
         <Link href="mailto:dewantorotriatmojo@gmail.com">
-          <div className="group flex h-[6vh] w-[6vh] items-center justify-center rounded-[1.39vh] bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] lg:h-[6.48vh] lg:w-[6.48vh]">
+          <div className="group flex h-[6vh] w-[6vh] items-center justify-center rounded-[1.39vh] bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] lg:h-[6.95vh] lg:w-[6.95vh]">
             <svg
-              className="w-[4vh] fill-[white] group-hover:fill-[#208ce5] lg:w-[4.17vh]"
+              className="w-[4vh] fill-[white] group-hover:fill-[#208ce5] lg:w-[4.63vh]"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
             >
@@ -53,9 +53,9 @@ export default function ContactButton({ items }: { items: string }) {
     return (
       <>
         <Link href="https://www.instagram.com/dewo.tm/">
-          <div className="group flex h-[6vh] w-[6vh] items-center justify-center rounded-[1.39vh] bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] lg:h-[6.48vh] lg:w-[6.48vh]">
+          <div className="group flex h-[6vh] w-[6vh] items-center justify-center rounded-[1.39vh] bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] lg:h-[6.95vh] lg:w-[6.95vh]">
             <svg
-              className="w-[4vh] fill-[white] group-hover:fill-[#208ce5] lg:w-[4.17vh]"
+              className="w-[4vh] fill-[white] group-hover:fill-[#208ce5] lg:w-[4.63vh]"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
             >

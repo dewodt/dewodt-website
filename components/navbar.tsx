@@ -4,7 +4,7 @@ import Item from "components/item";
 
 export default function NavBar({ onPage }: { onPage: string }) {
   return (
-    <div className="height-[8.15vh] flex flex-row items-start gap-x-[10vw] text-[2.3vh] lg:text-[2.77vh]">
+    <div className="height-[8.15vh] flex flex-row items-start gap-x-[10vw] text-[2.3vh] lg:text-[2.78vh]">
       <Image
         src={Logo}
         alt="dewodt's logo"
