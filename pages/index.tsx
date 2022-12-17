@@ -3,7 +3,7 @@ import Head from "next/head";
 import NavBar from "components/navbar";
 import Photo from "public/dewo.jpg";
 import ContactButton from "components/contactbutton";
-import Profile from "components/profile"
+import Profile from "components/profile";
 
 export default function Home() {
   return (

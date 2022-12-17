@@ -1,14 +1,26 @@
+import Typewriter from 'typewriter-effect';
+
 export default function Profile() {
   return (
     <div className="text-[2vh] lg:text-[2.78vh]">
-      <p className="text-[3.5vh] text-[#208ce5] lg:text-[4.63vh]">
-        Dewantoro Triatmojo
+      <div className="text-[3.5vh] lg:text-[4.63vh]">
+        <Typewriter 
+          options={{ 
+            autoStart: true,
+            loop: true,
+          }}
+          onInit={(typewriter) => {
+            typewriter.typeString('Hello, I\'m <span style="color:#208ce5">Dewo!</span>')
+              .deleteAll()
+              .start();
+          }}
+        />
+      </div>
+      <p className="mb-[3vh] lg:mb-[4.63vh]">
+        My full name is <span className="text-[#208ce5]">Dewantoro Triatmojo</span>
       </p>
       <p className="mb-[3vh] lg:mb-[4.63vh]">
-        They call me <span className="text-[#208ce5]">Dewo</span>
-      </p>
-      <p className="mb-[3vh] lg:mb-[4.63vh]">
-        Currently Studying{" "}<span className="text-[#208ce5]">Informatics</span> in <br />
+        Currently studying{" "}<span className="text-[#208ce5]">Informatics</span> in <br />
         <span className="text-[#208ce5]">Bandung Institute of Technology</span>
       </p>
       <p className="mb-[3vh] lg:mb-[4.63vh]">
