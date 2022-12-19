@@ -17,7 +17,7 @@ export default function Home() {
         <Image
           src={Photo}
           alt="Dewo"
-          className="w-[35vh] rounded-[50%] border-[0.7vh] sm:border-[0.92vh] border-solid border-[#208ce5] sm:mr-[3.91vw] sm:w-[46.3vh]"
+          className="w-[35vh] rounded-[50%] border-[8px] border-solid border-[#208ce5] sm:mr-[3.91vw] sm:w-[46.3vh]"
         />
         <div className="flex flex-col">
           <Profile />
