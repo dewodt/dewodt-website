@@ -16,14 +16,14 @@ export default function PageHead() {
       <meta property="og:url" content="https://dewodt.com/" />
       <meta property="og:title" content="Dewantoro Triatmojo" />
       <meta property="og:description" content="Dewantoro Triatmojo's personal website containing profile, contact, and other more!" />
-      <meta property="og:image" content="https://dewodt.com/linkpreview.png" />
+      <meta property="og:image" content="https://dewodt.com/dewo.jpg" />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content="https://dewodt.com/" />
       <meta property="twitter:title" content="Dewantoro Triatmojo" />
       <meta property="twitter:description" content="Dewantoro Triatmojo's personal website containing profile, contact, and other more!" />
-      <meta property="twitter:image" content="https://dewodt.com/linkpreview.png" />
+      <meta property="twitter:image" content="https://dewodt.com/dewo.jpg" />
     </Head>
   )
 }
