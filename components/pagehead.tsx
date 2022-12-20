@@ -11,19 +11,13 @@ export default function PageHead() {
       <meta name="keywords" content="Dewantoro Triatmojo, Dewo, dewodt" />
       <meta name="author" content="Dewantoro Triatmojo" />
 
-      {/* Open Graph / Facebook */}
+      {/* Social Media */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://dewodt.com/" />
       <meta property="og:title" content="Dewantoro Triatmojo" />
       <meta property="og:description" content="Dewantoro Triatmojo's personal website containing profile, contact, and other more!" />
-      <meta property="og:image" content="https://dewodt.com/dewo.jpg" />
-
-      {/* Twitter */}
+      <meta property="og:image" content="https://dewodt.com/linkpreview.jpg" />
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://dewodt.com/" />
-      <meta property="twitter:title" content="Dewantoro Triatmojo" />
-      <meta property="twitter:description" content="Dewantoro Triatmojo's personal website containing profile, contact, and other more!" />
-      <meta property="twitter:image" content="https://dewodt.com/dewo.jpg" />
     </Head>
   )
 }
