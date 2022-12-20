@@ -1,13 +1,10 @@
-import Head from "next/head";
+import PageHead from "components/pagehead";
 import NavBar from "components/navbar";
 
 export default function ComingSoon() {
   return (
     <>
-      <Head>
-        <title>Dewo</title>
-        <link rel="shortcut icon" href="logo.ico" />
-      </Head>
+      <PageHead />
       <NavBar onPage={"Coming Soon"} />
       <div className="flex min-h-[91.85vh] items-center justify-center text-center text-[3.5vh] sm:text-[4.63vh]">
         <div>

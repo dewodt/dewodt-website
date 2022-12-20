@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Head from "next/head";
+import PageHead from "components/pagehead";
 import NavBar from "components/navbar";
 import ContactButton from "components/contactbutton";
 import Profile from "components/profile";
@@ -8,10 +8,7 @@ import Photo from "public/dewo.jpg";
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Dewo</title>
-        <link rel="shortcut icon" href="logo.ico" />
-      </Head>
+      <PageHead />
       <NavBar onPage={"Home"} />
       <div className="flex min-h-[91.85vh] flex-col flex-wrap items-center justify-center gap-y-[3vh] py-[6vh] sm:flex-row">
         <Image
