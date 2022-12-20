@@ -15,6 +15,7 @@ export default function Home() {
           src={Photo}
           alt="Dewo"
           className="w-[35vh] rounded-[50%] border-[8px] border-solid border-[#208ce5] sm:mr-[3.91vw] sm:w-[46.3vh]"
+          priority={true}
         />
         <div className="block">
           <Profile />
