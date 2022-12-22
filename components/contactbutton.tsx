@@ -32,7 +32,7 @@ export default function ContactButton() {
     <div className="flex flex-row justify-around">
       {itemObj.map((item, index) => (
         <Link key={index} href={item.link}>
-          <div className="group flex h-[6vh] w-[6vh] items-center justify-center rounded-[1.39vh] bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] sm:h-[6.95vh] sm:w-[6.95vh]">
+          <button className="group flex h-[6vh] w-[6vh] items-center justify-center rounded-[1.39vh] bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] sm:h-[6.95vh] sm:w-[6.95vh]">
             <svg
               className="w-[4vh] fill-[white] group-hover:fill-[#208ce5] sm:w-[4.63vh]"
               xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ export default function ContactButton() {
             >
               <path d={item.pathd} />
             </svg>
-          </div>
+          </button>
         </Link>
       ))}
     </div>

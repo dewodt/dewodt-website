@@ -16,14 +16,14 @@ export default function NavBar({ onPage }: { onPage: string }) {
 
   return (
     <nav className="min-h-[8.15vh] w-[100vw] sm:flex sm:items-center sm:gap-x-[10vw]">
-      <button className="w-[4.5vh] absolute top-[1.825vh] left-[1.825vh] sm:static sm:ml-[1.825vh]">
-        <Link href="/">
+      <Link href="/">
+        <button className="w-[4.5vh] absolute top-[1.825vh] left-[1.825vh] sm:static sm:ml-[1.825vh]">
             <Image
               src={Logo}
               alt="Dewo's Logo"
             />
-        </Link>
-      </button>
+        </button>
+      </Link>
       <ul className={expandNav ? expandNavStyle : notExpandNavStyle}>
         <Item url="/" page="Home" onPage={onPage} />
         <Item url="/comingsoon" page="Coming Soon" onPage={onPage} />
