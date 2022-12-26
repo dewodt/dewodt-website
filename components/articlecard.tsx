@@ -10,13 +10,13 @@ export default function ArticleCard({ data }: any) {
         <div className="flex flex-row flex-wrap justify-start gap-x-[4vw] mb-[0.92vh] sm:gap-x-[0.78vw]">
           {
             data.tags.map( (item: string) => 
-              <div className="py-[0.55vh] px-[3vw] w-fit bg-[#208ce5] text-[1.4vh] rounded-[0.925vh] sm:px-[0.7vw]" key={item}>{item}</div>
+              <div className="py-[0.55vh] px-[3vw] w-fit bg-[#208ce5] text-[1.4vh] rounded-[0.925vh] font-semibold sm:px-[0.7vw]" key={item}>{item}</div>
             )
           }
         </div>
-        <p className="text-[#1A1C2B] text-left text-[2.78vh] leading-tight line-clamp-1">{data.title}</p>
-        <p className="text-[#1A1C2B] text-left text-[1.39vh] leading-tight mb-[0.92vh]">{publishedDate}</p>
-        <p className="text-[#1A1C2B] text-justify text-[1.85vh] leading-tight line-clamp-3">{data.content}</p>
+        <p className="text-[#1A1C2B] text-left text-[2.78vh] leading-tight line-clamp-1 font-bold">{data.title}</p>
+        <p className="text-[#1A1C2B] text-left text-[1.39vh] leading-tight mb-[0.92vh] font-semibold">{publishedDate}</p>
+        <p className="text-[#1A1C2B] text-justify text-[1.85vh] leading-tight line-clamp-3 ">{data.content}</p>
       </button>
     </Link>
   );

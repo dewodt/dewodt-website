@@ -46,7 +46,7 @@ export default function Posts({ data }: any) {
           <SearchBar handleChange={handleChange} handleReset={handleReset} />
           {
             (!isEmpty) && (
-              <div className="text-[#208ce5] text-[2.5vh]">
+              <div className="text-[#208ce5] text-[2.5vh] font-bold">
                 {countResult} search result was found
               </div>
             )

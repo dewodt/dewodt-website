@@ -30,6 +30,5 @@ a {
 
 @font-face {
   font-family: "Inter";
-  font-weight: 700;
   src: url("../public/Inter.ttf");
 }

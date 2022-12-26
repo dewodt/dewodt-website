@@ -17,7 +17,7 @@ export default function NavBar({ onPage }: { onPage: string }) {
     "hidden sm:static sm:flex sm:flex-row sm:gap-x-[3.15vw] sm:bg-[#1A1C2B]";
 
   return (
-    <nav className="min-h-[10vh] w-[100vw] sm:flex sm:items-center sm:gap-x-[10vw]">
+    <nav className="min-h-[10vh] w-[100vw] sm:flex sm:items-center sm:gap-x-[10vw] font-bold">
       <Link href="/">
         <button className="absolute top-[2.75vh] left-[2.75vh] w-[4.5vh]">
           <Image src={Logo} alt="Dewo's Logo" />
