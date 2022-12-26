@@ -14,10 +14,10 @@ export default function NavBar({ onPage }: { onPage: string }) {
   const expandNavStyle =
     "flex flex-col absolute top-[10vh] py-[2vh] px-[2.75vh] gap-y-[1.38vh] w-[100vw] bg-[#1F2133] sm:static sm:flex sm:flex-row sm:gap-x-[3.15vw] sm:bg-[#1A1C2B]";
   const notExpandNavStyle =
-    "hidden sm:static sm:flex sm:flex-row sm:gap-x-[3.15vw] sm:bg-[#1A1C2B]";
+    "hidden sm:static sm:flex sm:flex-row sm:gap-x-[3.15vw] sm:bg-[#1A1C2B] sm:ml-[15vw]";
 
   return (
-    <nav className="min-h-[10vh] w-[100vw] sm:flex sm:items-center sm:gap-x-[10vw] font-bold">
+    <nav className="min-h-[10vh] w-[100vw] sm:flex sm:items-center font-bold">
       <Link href="/">
         <button className="absolute top-[2.75vh] left-[2.75vh] w-[4.5vh]">
           <Image src={Logo} alt="Dewo's Logo" />
