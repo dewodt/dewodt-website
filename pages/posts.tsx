@@ -68,7 +68,9 @@ const POSTS_QUERY = `query Posts {
   allPosts(orderBy: _firstPublishedAt_DESC) {
     id
     title
-    content
+    content {
+      value
+    }
     tags
     image {
       id

@@ -2,9 +2,11 @@ import Image from "next/image";
 import NavBar from "components/navbar";
 import PageHead from "components/pagehead";
 import { request } from "../../lib/datocms";
+import { StructuredText } from 'react-datocms';
 
 export default function Article({data}: any) {
   const publishedDate = (new Date(data._firstPublishedAt)).toLocaleString("id-ID", { dateStyle: "long" });
+
   return(
     <>
       <PageHead />
@@ -21,7 +23,7 @@ export default function Article({data}: any) {
             }
           </div>
           <Image className="w-[auto] max-h-[50vh] mx-auto rounded-[2.78vh] mb-[2.78vh]" src={data.image.url} alt={data.image.alt} width={data.image.width} height={data.image.height}/>
-          <p className="text-justify text-[2vh] leading-[1.8] font-medium sm:text-[2.5vh]">{data.content}</p>
+          <div className="text-justify text-[2vh] leading-[1.8] font-[] sm:text-[2.5vh]"><StructuredText data={data.content} /></div>
         </div>
       </div>
     </>
@@ -32,7 +34,9 @@ const POSTS_QUERY = `query Posts {
   allPosts(orderBy: _firstPublishedAt_DESC) {
     id
     title
-    content
+    content {
+      value
+    }
     tags
     image {
       id
