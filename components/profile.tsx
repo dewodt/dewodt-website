@@ -2,7 +2,7 @@ import Typewriter from 'typewriter-effect';
 
 export default function Profile() {
   return (
-    <div className="text-[2vh] sm:text-[2.78vh]">
+    <div className="text-[2vh] sm:text-[2.78vh] font-bold">
       <div className="text-[3.5vh] sm:text-[4.63vh]">
         <Typewriter 
           options={{ 
