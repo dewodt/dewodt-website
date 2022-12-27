@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <PageHead />
       <NavBar onPage={"Home"} />
-      <div className="flex min-h-[91.85vh] flex-col flex-wrap items-center justify-center gap-y-[3vh] py-[6vh] sm:flex-row">
+      <div className="flex min-h-[90vh] flex-col flex-wrap items-center justify-center gap-y-[3vh] py-[6vh] sm:flex-row">
         <Image
           src={Photo}
           alt="Dewo"

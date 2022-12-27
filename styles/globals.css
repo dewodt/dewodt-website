@@ -10,7 +10,7 @@ body {
 }
 
 a {
-  color: inherit;
+  color: #208ce5;
   text-decoration: none;
 }
 
@@ -30,6 +30,5 @@ a {
 
 @font-face {
   font-family: "Inter";
-  font-weight: 700;
   src: url("../public/Inter.ttf");
 }
