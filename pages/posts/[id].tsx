@@ -50,9 +50,15 @@ const POSTS_QUERY = `query Posts {
   }
 }`;
 
+const PATHS_QUERY = `query Posts {
+  allPosts(orderBy: _firstPublishedAt_DESC) {
+    id
+  }
+}`;
+
 export async function getStaticPaths() {
   const dataQuery = await request({
-    query: POSTS_QUERY,
+    query: PATHS_QUERY,
   });
 
   const postIds = dataQuery["allPosts"].map( (item: any) => {
