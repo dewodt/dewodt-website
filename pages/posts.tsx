@@ -20,9 +20,8 @@ export default function Posts({ data }: any) {
     } else {
       const newData = postsData.filter( (item: any) => {
         const itemTitle = item.title.toLowerCase();
-        const itemContent = item.content.toLowerCase();
         const itemDate = (new Date(item._firstPublishedAt)).toLocaleString("id-ID", { dateStyle: "long" }).toLowerCase();
-        return itemTitle.includes(inputValue) || itemContent.includes(inputValue) || itemDate.includes(inputValue);
+        return itemTitle.includes(inputValue) || itemDate.includes(inputValue);
       });
       setFilteredData(newData);
       setCountResult(newData.length);
