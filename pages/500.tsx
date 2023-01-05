@@ -5,8 +5,8 @@ export default function Custom500() {
     <>
       <PageHead />
       <div className="flex flex-col items-center justify-center h-[100vh] text-center font-bold">
-        <p className="text-[#208ce5] text-[3.5vh] sm:text-[4.63vh]">500 - Server Error</p>
-        <p className="text-[2vh] sm:text-[2.78vh] mb-[1.4vh]">Please refresh this page!</p>
+        <p className="text-[#208ce5] text-3xl leading-normal md:text-5xl md:leading-normal">500 - Server Error</p>
+        <p className="text-lg leading-normal mb-4 md:mb-6 md:text-2xl md:leading-normal">Please refresh this page!</p>
       </div>
     </>
   );

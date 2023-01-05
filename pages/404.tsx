@@ -6,10 +6,10 @@ export default function Custom404() {
     <>
       <PageHead />
       <div className="flex flex-col items-center justify-center h-[100vh] text-center font-bold">
-        <p className="text-[#208ce5] text-[3.5vh] sm:text-[4.63vh]">404 - Page Not Found</p>
-        <p className="text-[2vh] sm:text-[2.78vh] mb-[1.4vh]">The page you&apos;re looking for doesn&apos;t exist</p>
+        <p className="text-[#208ce5] text-3xl leading-normal md:text-5xl md:leading-normal">404 - Page Not Found</p>
+        <p className="text-lg leading-normal mb-4 md:mb-6 md:text-2xl md:leading-normal">The page you&apos;re looking for doesn&apos;t exist</p>
         <Link href="/">
-          <button className="px-[4vh] text-[2vh] h-[4.5vh] rounded-[1vh] sm:h-[5.56vh] sm:text-[2.78vh] bg-[#208ce5] sm:rounded-[2vh] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] hover:text-[#208ce5]">Home</button>
+          <button className="text-lg text-white px-7 py-2 rounded-xl md:text-2xl bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] hover:text-[#208ce5]">Home</button>
         </Link>
       </div>
     </>
