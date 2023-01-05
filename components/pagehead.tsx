@@ -5,6 +5,7 @@ export default function PageHead() {
     <Head>
       <title>Dewantoro Triatmojo</title>
       <link rel="shortcut icon" href="logo.svg" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="title" content="Dewantoro Triatmojo" />
       <meta name="description" content="Dewantoro Triatmojo's personal website containing profile, contact, and other more!" />
       <meta charSet="UTF-8" />

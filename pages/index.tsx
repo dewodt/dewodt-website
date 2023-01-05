@@ -10,11 +10,11 @@ export default function Home() {
     <>
       <PageHead />
       <NavBar onPage={"Home"} />
-      <div className="flex min-h-[90vh] flex-col flex-wrap items-center justify-center gap-y-[3vh] py-[6vh] sm:flex-row">
+      <div className="flex min-h-[calc(100vh-5rem)] w-screen flex-col items-center justify-center gap-y-6 px-6 pb-10 pt-5 sm:flex-row sm:gap-x-8 lg:gap-x-12">
         <Image
           src={Photo}
           alt="Dewo"
-          className="w-[35vh] rounded-[50%] border-[8px] border-solid border-[#208ce5] sm:mr-[3.91vw] sm:w-[46.3vh]"
+          className="w-full max-w-[300px] rounded-[50%] border-8 border-solid border-[#208ce5] sm:w-80 sm:max-w-none md:w-96 lg:w-[28rem]"
           priority={true}
         />
         <div className="block">

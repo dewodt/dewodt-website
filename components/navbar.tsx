@@ -11,16 +11,14 @@ export default function NavBar({ onPage }: { onPage: string }) {
     setExpandNav(!expandNav);
   }
 
-  const expandNavStyle =
-    "flex flex-col absolute top-[10vh] py-[2vh] px-[2.75vh] gap-y-[1.38vh] w-[100vw] bg-[#1F2133] sm:static sm:flex sm:flex-row sm:gap-x-[3.15vw] sm:bg-[#1A1C2B]";
-  const notExpandNavStyle =
-    "hidden sm:static sm:flex sm:flex-row sm:gap-x-[3.15vw] sm:bg-[#1A1C2B] sm:ml-[15vw]";
+  const expandNavStyle = "flex flex-col gap-y-3 absolute top-20 w-screen py-4 px-6 bg-[#1F2133] md:static md:flex md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:ml-[15vw]";
+  const notExpandNavStyle = "hidden md:static md:flex md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:ml-[15vw]";
 
   return (
-    <nav className="min-h-[10vh] w-[100vw] sm:flex sm:items-center font-bold">
+    <nav className="h-20 w-screen sm:flex sm:items-center">
       <Link href="/">
-        <button className="absolute top-[2.75vh] left-[2.75vh] w-[4.5vh]">
-          <Image src={Logo} alt="Dewo's Logo" />
+        <button className="absolute top-[calc(2.5rem-1.125rem)] left-6">
+          <Image className="w-9" src={Logo} alt="Dewo's Logo" />
         </button>
       </Link>
       <ul className={expandNav ? expandNavStyle : notExpandNavStyle}>
@@ -30,11 +28,11 @@ export default function NavBar({ onPage }: { onPage: string }) {
       </ul>
       {expandNav ? (
         <button
-          className="absolute top-[2.5vh] right-[2.75vh] w-[3vh] sm:hidden"
+          className="absolute top-[calc(2.5rem-1.125rem)] right-6 md:hidden"
           onClick={handleClickNav}
         >
           <svg
-            className="fill-white"
+            className="h-9 fill-white"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 320 512"
           >
@@ -43,11 +41,11 @@ export default function NavBar({ onPage }: { onPage: string }) {
         </button>
       ) : (
         <button
-          className="absolute top-[3vh] right-[3.25vh] w-[3.5vh] sm:hidden"
+          className="absolute top-[calc(2.5rem-1rem)] right-6 md:hidden"
           onClick={handleClickNav}
         >
           <svg
-            className="fill-white"
+            className="h-8 fill-white"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
           >
