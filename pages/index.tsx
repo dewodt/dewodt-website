@@ -14,7 +14,7 @@ export default function Home() {
         <Image
           src={Photo}
           alt="Dewo"
-          className="w-full max-w-[300px] rounded-[50%] border-8 border-solid border-[#208ce5] sm:w-80 sm:max-w-none md:w-96 lg:w-[28rem]"
+          className="w-64 rounded-[50%] border-8 border-solid border-[#208ce5] lg:w-96"
           priority={true}
         />
         <div className="block">
