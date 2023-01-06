@@ -29,12 +29,12 @@ export default function ContactButton() {
   ];
 
   return (
-    <div className="flex flex-row justify-around">
+    <div className="flex flex-row justify-center gap-x-6 lg:gap-x-10">
       {itemObj.map((item, index) => (
         <Link key={index} href={item.link}>
-          <button className="group flex h-[6vh] w-[6vh] items-center justify-center rounded-[1.39vh] bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] sm:h-[6.95vh] sm:w-[6.95vh]">
+          <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] lg:h-14 lg:w-14">
             <svg
-              className="w-[4vh] fill-[white] group-hover:fill-[#208ce5] sm:w-[4.63vh]"
+              className="w-8 fill-[white] group-hover:fill-[#208ce5] lg:w-9"
               xmlns="http://www.w3.org/2000/svg"
               viewBox={item.viewBox}
             >

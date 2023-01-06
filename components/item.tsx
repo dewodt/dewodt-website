@@ -1,12 +1,23 @@
 import Link from "next/link";
 
-export default function Item({ url, page, onPage }: { url: string, page: string, onPage: string }) {
-	const onPageStyle = "text-[#208ce5] sm:border-solid sm:border-b-[0.46vh] sm:border-[#208ce5] pb-[0.5vh]";
-	const notOnPageStyle = "text-[white]";
-	
-	return (
-		<li className="list-none text-[2.3vh] sm:text-[2.78vh]">
-			<Link className={page === onPage ? onPageStyle : notOnPageStyle} href={url}>{page}</Link>
-		</li>
-	)
+interface typeItem {
+  url: string;
+  page: string;
+  onPage: string;
+}
+
+export default function Item({ url, page, onPage }: typeItem) {
+  const onPageStyle = "text-[#208ce5] md:border-solid md:border-b-4 md:border-[#208ce5] md:pb-1";
+  const notOnPageStyle = "text-white";
+
+  return (
+    <li className="list-none text-lg font-bold md:text-xl lg:text-2xl">
+      <Link
+        className={page === onPage ? onPageStyle : notOnPageStyle}
+        href={url}
+      >
+        {page}
+      </Link>
+    </li>
+  );
 }

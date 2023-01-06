@@ -8,13 +8,17 @@ import Photo from "public/dewo.jpg";
 export default function Home() {
   return (
     <>
-      <PageHead />
+      <PageHead 
+        headTitle="Home | Dewantoro Triatmojo"
+        headDescription="This is Dewantoro Triatmojo's personal website!"
+        headTag="home, personal website, portofolio, curriculum vitae"
+      />
       <NavBar onPage={"Home"} />
-      <div className="flex min-h-[90vh] flex-col flex-wrap items-center justify-center gap-y-[3vh] py-[6vh] sm:flex-row">
+      <div className="flex min-h-[calc(100vh-5rem)] w-screen flex-col items-center justify-center gap-y-6 px-6 pb-10 pt-5 sm:flex-row sm:gap-x-8 lg:gap-x-12">
         <Image
           src={Photo}
           alt="Dewo"
-          className="w-[35vh] rounded-[50%] border-[8px] border-solid border-[#208ce5] sm:mr-[3.91vw] sm:w-[46.3vh]"
+          className="w-64 rounded-[50%] border-8 border-solid border-[#208ce5] lg:w-96"
           priority={true}
         />
         <div className="block">
