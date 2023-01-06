@@ -2,6 +2,7 @@ import ArticleCard from "components/articlecard";
 import NavBar from "components/navbar";
 import PageHead from "components/pagehead";
 import SearchBar from "components/searchbar";
+import { COOKIE_NAME_PRERENDER_BYPASS } from "next/dist/server/api-utils";
 import { useState } from "react";
 import { request } from "../lib/datocms";
 
@@ -18,9 +19,11 @@ export default function Posts({ data }: any) {
       setCountResult(0);
       setIsEmpty(true);
     } else {
-      const newData = postsData.filter( (item: any) => {
+      const newData = postsData.filter((item: any) => {
         const itemTitle = item.title.toLowerCase();
-        const itemDate = (new Date(item._firstPublishedAt)).toLocaleString("id-ID", { dateStyle: "long" }).toLowerCase();
+        const itemDate = new Date(item._firstPublishedAt)
+          .toLocaleString("en-UK", { dateStyle: "long" })
+          .toLowerCase();
         return itemTitle.includes(inputValue) || itemDate.includes(inputValue);
       });
       setFilteredData(newData);
@@ -30,7 +33,7 @@ export default function Posts({ data }: any) {
   }
 
   function handleReset() {
-    (document.getElementById("input") as HTMLInputElement).value="";
+    (document.getElementById("input") as HTMLInputElement).value = "";
     setFilteredData(postsData);
     setCountResult(0);
     setIsEmpty(true);
@@ -39,27 +42,21 @@ export default function Posts({ data }: any) {
   return (
     <>
       <PageHead />
-      <NavBar onPage="Posts"/>
-      <div className="flex flex-col items-center min-h-[90vh] mt-[3vh] mb-[8vh] sm:mt-[6vh] sm:mb-[10vh]">
-        <div className="flex flex-col gap-y-[1.85vh] h-[13vh] items-center mb-[2vh] sm:mb-[3vh]">
+      <NavBar onPage="Posts" />
+      <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center pt-6 pb-12">
+        <div className="mb-8 flex flex-col items-center gap-y-4">
           <SearchBar handleChange={handleChange} handleReset={handleReset} />
-          {
-            (!isEmpty) && (
-              <div className="text-[#208ce5] text-[2.5vh] font-bold">
-                {countResult} search result was found
-              </div>
-            )
-          }
+          <div className="text-lg font-bold text-[#208ce5]">
+            {!isEmpty ? `${countResult} search result was found` : <br />}
+          </div>
         </div>
-        <div className="flex flex-wrap justify-center w-[80vw] gap-x-[4vw] gap-y-[6vh]">
-          {
-            filteredData.map( (item: any) => 
-              <ArticleCard key={item.id} data={item} />
-            )
-          }
+        <div className="grid justify-center gap-x-14 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredData.map((item: any) => (
+            <ArticleCard key={item.id} data={item} />
+          ))}
         </div>
       </div>
-    </> 
+    </>
   );
 }
 
@@ -88,6 +85,6 @@ export async function getStaticProps() {
     query: POSTS_QUERY,
   });
   return {
-    props: { data }
+    props: { data },
   };
 }
