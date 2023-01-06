@@ -9,7 +9,11 @@ export default function Article({ data }: any) {
 
   return (
     <>
-      <PageHead />
+      <PageHead
+        headTitle={`${data.title} | Dewantoro Triatmojo`}
+        headDescription={data.headDescription}
+        headTag={data.tags.join(", ")}
+      />
       <NavBar onPage="Posts" />
       <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center pt-6 pb-12">
         <div className="w-[80vw] sm:w-[60vw] lg:w-[40vw]">
@@ -62,6 +66,7 @@ const POSTS_QUERY = `query Posts {
     }
     updatedAt
     _firstPublishedAt
+    headDescription
   }
 }`;
 

@@ -8,7 +8,11 @@ import Photo from "public/dewo.jpg";
 export default function Home() {
   return (
     <>
-      <PageHead />
+      <PageHead 
+        headTitle="Home | Dewantoro Triatmojo"
+        headDescription="This is Dewantoro Triatmojo's personal website!"
+        headTag="home, personal website, portofolio, curriculum vitae"
+      />
       <NavBar onPage={"Home"} />
       <div className="flex min-h-[calc(100vh-5rem)] w-screen flex-col items-center justify-center gap-y-6 px-6 pb-10 pt-5 sm:flex-row sm:gap-x-8 lg:gap-x-12">
         <Image

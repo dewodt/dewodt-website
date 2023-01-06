@@ -2,7 +2,6 @@ import ArticleCard from "components/articlecard";
 import NavBar from "components/navbar";
 import PageHead from "components/pagehead";
 import SearchBar from "components/searchbar";
-import { COOKIE_NAME_PRERENDER_BYPASS } from "next/dist/server/api-utils";
 import { useState } from "react";
 import { request } from "../lib/datocms";
 
@@ -41,7 +40,11 @@ export default function Posts({ data }: any) {
 
   return (
     <>
-      <PageHead />
+      <PageHead
+        headTitle="Posts | Dewantoro Triatmojo"
+        headDescription="These are posts made by Dewantoro Triatmojo" 
+        headTag="posts, blog, announcement"
+      />
       <NavBar onPage="Posts" />
       <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center pt-6 pb-12">
         <div className="mb-8 flex flex-col items-center gap-y-4">
