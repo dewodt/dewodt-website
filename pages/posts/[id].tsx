@@ -16,17 +16,17 @@ export default function Article({ data }: any) {
       />
       <NavBar onPage="Posts" />
       <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center pt-6 pb-12">
-        <div className="w-[80vw] sm:w-[60vw] lg:w-[40vw]">
-          <p className="mb-2 text-3xl font-bold text-[#208ce5] lg:text-4xl">
+        <div className="w-[80vw] sm:w-[60vw] lg:w-[50vw] 2xl:w-[40vw]">
+          <p className="mb-2 text-3xl font-bold text-[#208ce5] 2xl:text-4xl">
             {data.title}
           </p>
-          <p className="mb-2 text-base font-semibold lg:text-lg">
+          <p className="mb-2 text-base font-semibold 2xl:text-lg">
             {publishedDate}
           </p>
-          <div className="mb-7 flex flex-row flex-wrap justify-start gap-x-5 font-semibold">
+          <div className="mb-7 flex flex-row flex-wrap justify-start gap-x-4 gap-y-3">
             {data.tags.map((item: string) => (
               <div
-                className="rounded-md bg-[#208ce5] py-1 px-3 text-xs lg:text-sm"
+                className="rounded-md bg-[#208ce5] py-1 px-3 text-sm font-semibold 2xl:text-base"
                 key={item}
               >
                 {item}
@@ -34,13 +34,13 @@ export default function Article({ data }: any) {
             ))}
           </div>
           <Image
-            className="w-full h-auto mb-7 rounded-2xl sm:rounded-3xl"
+            className="mb-7 h-auto w-full rounded-2xl sm:rounded-3xl"
             src={data.image.url}
             alt={data.image.alt}
             width={data.image.width}
             height={data.image.height}
           />
-          <div className="text-justify text-lg leading-relaxed lg:text-xl lg:leading-relaxed">
+          <div className="text-justify text-lg leading-relaxed 2xl:text-xl 2xl:leading-relaxed">
             <StructuredText data={data.content} />
           </div>
         </div>
