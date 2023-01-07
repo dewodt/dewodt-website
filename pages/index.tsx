@@ -8,7 +8,7 @@ import Photo from "public/dewo.jpg";
 export default function Home() {
   return (
     <>
-      <PageHead 
+      <PageHead
         headTitle="Home | Dewantoro Triatmojo"
         headDescription="This is Dewantoro Triatmojo's personal website!"
         headTag="home, personal website, portofolio, curriculum vitae"
@@ -18,7 +18,7 @@ export default function Home() {
         <Image
           src={Photo}
           alt="Dewo"
-          className="w-64 rounded-[50%] border-8 border-solid border-[#208ce5] lg:w-96"
+          className="w-64 rounded-[50%] border-8 border-solid border-[#208ce5] md:w-72 2xl:w-96"
           priority={true}
         />
         <div className="block">

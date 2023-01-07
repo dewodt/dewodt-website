@@ -11,7 +11,7 @@ export default function Item({ url, page, onPage }: typeItem) {
   const notOnPageStyle = "text-white";
 
   return (
-    <li className="list-none text-lg font-bold md:text-xl lg:text-2xl">
+    <li className="list-none text-lg font-bold md:text-xl 2xl:text-2xl">
       <Link
         className={page === onPage ? onPageStyle : notOnPageStyle}
         href={url}
