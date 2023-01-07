@@ -16,9 +16,9 @@ export default function ArticleCard({ data }: any) {
             )
           }
         </div>
-        <div className="text-[#1A1C2B] text-left text-xl leading-tight 2xl:text-2xl 2xl:leading-tight line-clamp-1 font-bold">{data.title}</div>
+        <div className="text-[#1A1C2B] inline text-left text-xl leading-tight 2xl:text-2xl 2xl:leading-tight line-clamp-1 font-bold">{data.title}</div>
         <div className="text-[#1A1C2B] text-left text-sm leading-tight 2xl:text-base 2xl:leading-tight mb-2 font-semibold">{publishedDate}</div>
-        <div className="text-[#1A1C2B] text-justify text-sm font-normal leading-tight 2xl:text-base 2xl:leading-tight line-clamp-3"><StructuredText data={data.content} /></div>
+        <div className="text-[#1A1C2B] inline text-justify text-sm font-normal leading-tight 2xl:text-base 2xl:leading-tight line-clamp-3"><StructuredText data={data.content} /></div>
       </button>
     </Link>
   );
