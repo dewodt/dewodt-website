@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { StructuredText } from 'react-datocms';
+import LinesEllipsis from 'react-lines-ellipsis';
+import { render } from 'datocms-structured-text-to-plain-text';
 
 export default function ArticleCard({ data }: any) {
   const publishedDate = (new Date(data._firstPublishedAt)).toLocaleString('en-UK', { dateStyle: "long" });
+  const contentPreview = render(data.content) as string | undefined
 
   return (
     <Link href={`posts/${data.id}`}>
@@ -18,7 +20,12 @@ export default function ArticleCard({ data }: any) {
         </div>
         <p className="text-[#1A1C2B] text-left text-xl leading-tight 2xl:text-2xl 2xl:leading-tight line-clamp-1 font-bold">{data.title}</p>
         <p className="text-[#1A1C2B] text-left text-sm leading-tight 2xl:text-base 2xl:leading-tight mb-2 font-semibold">{publishedDate}</p>
-        <p className="text-[#1A1C2B] whitespace-nowrap text-justify text-sm font-normal leading-tight 2xl:text-base 2xl:leading-tight line-clamp-3"><StructuredText data={data.content} /></p>
+        <LinesEllipsis
+          text={contentPreview}
+          maxLine="3"
+          ellipsis="..."
+          className="text-[#1A1C2B] text-justify text-sm leading-tight 2xl:text-base 2xl:leading-tight font-normal"
+        />
       </button>
     </Link>
   );
