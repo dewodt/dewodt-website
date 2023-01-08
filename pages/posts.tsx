@@ -63,7 +63,7 @@ export default function Posts({ data }: any) {
           {filteredData.map((item: any) => (
             <div 
               key={item.id}
-              data-aos="slide-up"
+              data-aos="fade-up"
               data-aos-once="true"
               data-aos-duration="400"
               data-aos-easing="ease-out-quad"
