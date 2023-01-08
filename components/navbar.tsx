@@ -11,7 +11,7 @@ export default function NavBar({ onPage }: { onPage: string }) {
     setExpandNav(!expandNav);
   }
 
-  const expandNavStyle = "flex flex-col gap-y-3 absolute top-20 w-screen py-4 px-6 bg-[#1F2133] md:static md:flex md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:ml-[15vw]";
+  const expandNavStyle = "flex flex-col gap-y-4 absolute top-20 w-screen py-6 px-6 bg-[#1F2133] md:static md:flex md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:ml-[15vw]";
   const notExpandNavStyle = "hidden md:static md:flex md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:ml-[15vw]";
 
   return (
