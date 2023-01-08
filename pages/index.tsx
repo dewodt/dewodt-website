@@ -14,7 +14,7 @@ export default function Home() {
         headTag="home, personal website, portofolio, curriculum vitae"
       />
       <NavBar onPage={"Home"} />
-      <div className="flex min-h-[calc(100vh-5rem)] w-screen flex-col items-center justify-center gap-y-6 px-6 pb-10 pt-5 sm:flex-row sm:gap-x-8 lg:gap-x-12">
+      <div className="flex min-h-[calc(100vh-5rem)] w-screen flex-col items-center justify-center gap-y-6 pb-10 pt-5 sm:flex-row sm:gap-x-8 lg:gap-x-12">
         <Image
           src={Photo}
           alt="Dewo"

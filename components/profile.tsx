@@ -2,7 +2,7 @@ import Typewriter from "typewriter-effect";
 
 export default function Profile() {
   return (
-    <div className="w-full max-w-xs text-center text-lg font-semibold leading-relaxed sm:text-left md:max-w-[320px] 2xl:max-w-[430px] 2xl:text-2xl 2xl:leading-relaxed">
+    <div className="w-[325px] text-center text-lg font-semibold leading-relaxed sm:text-left 2xl:w-[430px] 2xl:text-2xl 2xl:leading-relaxed mb-6 2xl:mb-8">
       <div className="text-3xl font-bold md:mb-1 2xl:text-[2.75rem] 2xl:leading-none">
         <Typewriter
           options={{
@@ -28,7 +28,7 @@ export default function Profile() {
         in
         <span className="text-[#208ce5]"> Bandung Institute of Technology</span>
       </div>
-      <div className="mb-6 2xl:mb-8">
+      <div>
         Intrested in{" "}
         <span className="text-[#208ce5]">Software Engineering </span>and{" "}
         <span className="text-[#208ce5]">Web Development</span>
