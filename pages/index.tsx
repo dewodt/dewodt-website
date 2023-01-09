@@ -18,7 +18,7 @@ export default function Home() {
         <Image
           src={Photo}
           alt="Dewo"
-          className="w-64 rounded-[50%] border-8 border-solid border-[#208ce5] md:w-72 2xl:w-96"
+          className="w-64 rounded-[50%] border-8 border-solid border-[#208ce5] md:w-72 2xl:w-96 animate-fadeInDown animate-ease-out animate-fast sm:animate-fadeInLeft sm:animate-ease-out sm:animate-fast"
           priority={true}
         />
         <div className="block">
