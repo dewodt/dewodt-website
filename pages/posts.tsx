@@ -52,7 +52,7 @@ export default function Posts({ data }: any) {
         headTag="posts, blog, announcement"
       />
       <NavBar onPage="Posts" />
-      <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center pt-6 pb-12">
+      <div className="absolute top-20 w-full min-h-[calc(100%-5rem)] flex flex-col items-center pt-6 pb-12">
         <div className="mb-8 flex flex-col items-center gap-y-4">
           <SearchBar handleChange={handleChange} handleReset={handleReset} />
           <div className={`text-lg 2xl:text-xl font-semibold text-[#208ce5] ${(!isEmpty && !isInitial) ? "animate-fadeIn animate-duration-300 animate-ease-out" : "animate-fadeOut animate-duration-300 animate-ease-in"}`}>

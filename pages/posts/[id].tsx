@@ -15,7 +15,7 @@ export default function Article({ data }: any) {
         headTag={data.tags.join(", ")}
       />
       <NavBar onPage="Posts" />
-      <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center pt-6 pb-12">
+      <div className="absolute top-20 w-full min-h-[calc(100%-5rem)] flex flex-col items-center pt-6 pb-12">
         <div className="w-[80vw] sm:w-[60vw] lg:w-[50vw] 2xl:w-[40vw]">
           <p className="mb-2 text-3xl font-bold text-[#208ce5] 2xl:text-4xl">
             {data.title}
@@ -39,6 +39,7 @@ export default function Article({ data }: any) {
             alt={data.image.alt}
             width={data.image.width}
             height={data.image.height}
+            loading="eager"
           />
           <div className="text-justify text-lg leading-relaxed 2xl:text-xl 2xl:leading-relaxed">
             <StructuredText data={data.content} />
