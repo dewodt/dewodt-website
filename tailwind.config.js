@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+
+const { withAnimations } = require('animated-tailwindcss')
+
+module.exports = withAnimations({
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -10,4 +13,4 @@ module.exports = {
   plugins: [
     require('@tailwindcss/line-clamp'),
   ],
-}
+})

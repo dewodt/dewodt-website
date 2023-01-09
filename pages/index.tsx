@@ -14,12 +14,13 @@ export default function Home() {
         headTag="home, personal website, portofolio, curriculum vitae"
       />
       <NavBar onPage={"Home"} />
-      <div className="flex min-h-[calc(100vh-5rem)] w-screen flex-col items-center justify-center gap-y-6 pb-10 pt-5 sm:flex-row sm:gap-x-8 lg:gap-x-12">
+      <div className="absolute top-20 w-full min-h-[calc(100%-5rem)] flex flex-col items-center justify-center gap-y-6 pb-10 pt-5 sm:flex-row sm:gap-x-8 lg:gap-x-12">
         <Image
           src={Photo}
           alt="Dewo"
-          className="w-64 rounded-[50%] border-8 border-solid border-[#208ce5] md:w-72 2xl:w-96"
+          className="w-64 rounded-[50%] border-8 border-solid border-[#208ce5] md:w-72 2xl:w-96 animate-fadeInDown animate-ease-out animate-fast sm:animate-fadeInLeft sm:animate-ease-out sm:animate-fast"
           priority={true}
+          loading="eager"
         />
         <div className="block">
           <Profile />
