@@ -6,15 +6,15 @@ import Item from "components/item";
 
 export default function NavBar({ onPage }: { onPage: string }) {
   const [expandNav, setExpandNav] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
+  const [everClicked, setEverClicked] = useState(false);
 
   function handleClickNav() {
     setExpandNav(!expandNav);
-    setIsClicked(true);
+    setEverClicked(true);
   }
 
   const expandNavStyle = "flex flex-col gap-y-4 absolute top-20 z-10 w-screen py-5 px-6 bg-[#1F2133] animate-slideInLeft animate-ease-out animate-faster md:static md:flex md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:ml-[15vw] md:animate-none";
-  const notExpandNavStyle = `flex flex-col gap-y-4 absolute top-20 z-10 w-screen py-5 px-6 bg-[#1F2133] ${isClicked ? "animate-slideOutLeft animate-ease-in animate-faster" : "hidden"} md:static md:flex md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:ml-[15vw] md:animate-none`;
+  const notExpandNavStyle = `flex flex-col gap-y-4 absolute top-20 z-10 w-screen py-5 px-6 bg-[#1F2133] ${everClicked ? "animate-slideOutLeft animate-ease-in animate-faster" : "hidden"} md:static md:flex md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:ml-[15vw] md:animate-none`;
 
   return (
     <nav className="h-20 w-screen animate-none sm:flex sm:items-center">
