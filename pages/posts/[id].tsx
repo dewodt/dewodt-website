@@ -92,7 +92,7 @@ export async function getStaticPaths() {
 
   return {
     paths: postIds,
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
@@ -105,6 +105,14 @@ export async function getStaticProps({ params }: any) {
     return item.id === params.id;
   });
 
+  // If page is deleted or unpublished
+  if (!data) {
+    return {
+      notFound: true
+    }
+  }
+
+  // If page is available
   return {
     props: { data },
   };
