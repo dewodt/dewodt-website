@@ -1,13 +1,17 @@
 import Head from "next/head";
 
 interface typePageHead {
-  headTitle: string,
-  headDescription: string,
-  headTag: string
+  headTitle: string;
+  headDescription: string;
+  headTag: string;
 }
 
-export default function PageHead({ headTitle, headDescription, headTag }: typePageHead) {
-  return(
+export default function PageHead({
+  headTitle,
+  headDescription,
+  headTag,
+}: typePageHead) {
+  return (
     <Head>
       <title>{headTitle}</title>
       <link rel="shortcut icon" href="logo.svg" />
@@ -15,7 +19,10 @@ export default function PageHead({ headTitle, headDescription, headTag }: typePa
       <meta name="title" content={headTitle} />
       <meta name="description" content={headDescription} />
       <meta charSet="UTF-8" />
-      <meta name="keywords" content={`Dewantoro Triatmojo, Dewo, dewodt, ${headTag}`} />
+      <meta
+        name="keywords"
+        content={`Dewantoro Triatmojo, Dewo, dewodt, ${headTag}`}
+      />
       <meta name="author" content="Dewantoro Triatmojo" />
 
       {/* Social Media */}
@@ -26,5 +33,5 @@ export default function PageHead({ headTitle, headDescription, headTag }: typePa
       <meta property="og:image" content="https://dewodt.com/linkpreview.jpg" />
       <meta property="twitter:card" content="summary_large_image" />
     </Head>
-  )
+  );
 }

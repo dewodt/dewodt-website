@@ -4,22 +4,24 @@ import PageHead from "components/pagehead";
 import SearchBar from "components/searchbar";
 import { useState, useEffect } from "react";
 import { request } from "../lib/datocms";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Posts({ data }: any) {
   const postsData = data["allPosts"];
   const [filteredData, setFilteredData] = useState(postsData);
   const [countResult, setCountResult] = useState();
   const [isEmpty, setIsEmpty] = useState(true);
-  const [isInitial, setIsInitial] = useState(true)
+  const [isInitial, setIsInitial] = useState(true);
 
   useEffect(() => {
     AOS.init();
-  }, [])
+  }, []);
 
   function handleChange() {
-    const inputValue = (document.getElementById("input") as HTMLInputElement).value.toLowerCase();
+    const inputValue = (
+      document.getElementById("input") as HTMLInputElement
+    ).value.toLowerCase();
     if (inputValue === "") {
       setFilteredData(postsData);
       setIsEmpty(true);
@@ -48,14 +50,20 @@ export default function Posts({ data }: any) {
     <>
       <PageHead
         headTitle="Posts | Dewantoro Triatmojo"
-        headDescription="These are posts made by Dewantoro Triatmojo" 
+        headDescription="These are posts made by Dewantoro Triatmojo"
         headTag="posts, blog, announcement"
       />
       <NavBar onPage="Posts" />
-      <div className="absolute top-20 w-full min-h-[calc(100%-5rem)] flex flex-col items-center pt-6 pb-12">
+      <div className="absolute top-20 flex min-h-[calc(100%-5rem)] w-full flex-col items-center pt-6 pb-12">
         <div className="mb-8 flex flex-col items-center gap-y-4">
           <SearchBar handleChange={handleChange} handleReset={handleReset} />
-          <div className={`text-lg 2xl:text-xl font-semibold text-[#208ce5] ${(!isEmpty && !isInitial) ? "animate-fadeIn animate-duration-300 animate-ease-out" : "animate-fadeOut animate-duration-300 animate-ease-in"}`}>
+          <div
+            className={`text-lg font-semibold text-[#208ce5] 2xl:text-xl ${
+              !isEmpty && !isInitial
+                ? "animate-fadeIn animate-duration-300 animate-ease-out"
+                : "animate-fadeOut animate-duration-300 animate-ease-in"
+            }`}
+          >
             {!isInitial ? `${countResult} search result was found` : <br />}
           </div>
         </div>

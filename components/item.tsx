@@ -7,7 +7,8 @@ interface typeItem {
 }
 
 export default function Item({ url, page, onPage }: typeItem) {
-  const onPageStyle = "text-[#208ce5] md:border-solid md:border-b-4 md:border-[#208ce5] md:pb-1";
+  const onPageStyle =
+    "text-[#208ce5] md:border-solid md:border-b-4 md:border-[#208ce5] md:pb-1";
   const notOnPageStyle = "text-white";
 
   return (
