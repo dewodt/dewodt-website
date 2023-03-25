@@ -5,7 +5,7 @@ interface props {
 
 export default function SearchBar({ handleChange, handleReset }: props) {
   return (
-    <div className="flex h-10 w-72 animate-fadeInDown items-center rounded-xl bg-white font-semibold animate-fast animate-ease-out sm:w-[25rem] lg:w-[40rem]">
+    <div className="flex h-10 w-72 items-center rounded-xl bg-white font-semibold sm:w-[25rem] lg:w-[40rem]">
       <span className="mx-3 h-1/2">
         <svg
           className="h-full fill-[#1A1C2B]"

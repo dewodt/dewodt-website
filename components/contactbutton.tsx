@@ -29,7 +29,7 @@ export default function ContactButton() {
   ];
 
   return (
-    <div className="flex animate-fadeInUp flex-row justify-center gap-x-6 animate-fast animate-ease-out animate-delay-[300ms] sm:animate-fadeInRight sm:animate-fast sm:animate-ease-out sm:animate-delay-[300ms] 2xl:gap-x-10">
+    <div className="flex flex-row justify-center gap-x-6 2xl:gap-x-10">
       {itemObj.map((item, index) => (
         <Link key={index} href={item.link}>
           <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">

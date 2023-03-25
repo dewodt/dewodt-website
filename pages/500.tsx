@@ -8,7 +8,7 @@ export default function Custom500() {
         headDescription="This is error 500 page"
         headTag="error 500"
       />
-      <div className="absolute top-0 flex h-full w-full animate-zoomIn flex-col items-center justify-center px-3 text-center animate-fast animate-ease-out">
+      <div className="flex h-[100vh] flex-col items-center justify-center px-3 text-center">
         <p className="text-3xl font-bold leading-normal text-[#208ce5] 2xl:text-5xl 2xl:leading-normal">
           500 - Server Error
         </p>
