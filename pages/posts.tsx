@@ -3,13 +3,11 @@ import NavBar from "components/NavBar";
 import PageHead from "components/pagehead";
 import SearchBar from "components/searchbar";
 import { useState, useEffect } from "react";
-import { request } from "../lib/datocms";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-export default function Posts({ data }: any) {
-  const postsData = data["allPosts"];
-  const [filteredData, setFilteredData] = useState(postsData);
+export default function Posts({ posts }: any) {
+  const [filteredData, setFilteredData] = useState(posts);
   const [countResult, setCountResult] = useState(0);
   const [isEmpty, setIsEmpty] = useState(true);
 
@@ -22,11 +20,11 @@ export default function Posts({ data }: any) {
       document.getElementById("input") as HTMLInputElement
     ).value.toLowerCase();
     if (inputValue === "") {
-      setFilteredData(postsData);
+      setFilteredData(posts);
       setCountResult(0);
       setIsEmpty(true);
     } else {
-      const newData = postsData.filter((item: any) => {
+      const newData = posts.filter((item: any) => {
         const itemTitle = item.title.toLowerCase();
         const itemDate = new Date(item._firstPublishedAt)
           .toLocaleString("en-UK", { dateStyle: "long" })
@@ -41,7 +39,7 @@ export default function Posts({ data }: any) {
 
   function handleReset() {
     (document.getElementById("input") as HTMLInputElement).value = "";
-    setFilteredData(postsData);
+    setFilteredData(posts);
     setCountResult(0);
     setIsEmpty(true);
   }
@@ -80,31 +78,41 @@ export default function Posts({ data }: any) {
   );
 }
 
-const POSTS_QUERY = `query Posts {
-  allPosts(orderBy: _firstPublishedAt_DESC) {
-    id
-    title
-    content {
-      value
-    }
-    tags
-    image {
-      id
-      url
-      alt
-      width
-      height
-    }
-    updatedAt
-    _firstPublishedAt
-  }
-}`;
-
 export async function getStaticProps() {
-  const data = await request({
-    query: POSTS_QUERY,
-  });
+  const res = await (
+    await fetch("https://graphql.datocms.com/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
+      },
+      body: JSON.stringify({
+        query: `{
+          allPostsContents(orderBy: _firstPublishedAt_DESC) {
+            id
+            title
+            content {
+              value
+            }
+            tags
+            image {
+              id
+              url
+              alt
+              width
+              height
+            }
+            updatedAt
+            _firstPublishedAt
+          }
+        }
+        `,
+      }),
+    })
+  ).json();
+
   return {
-    props: { data },
+    props: { posts: res.data.allPostsContents },
   };
 }

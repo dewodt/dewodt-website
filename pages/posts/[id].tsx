@@ -79,11 +79,40 @@ const PATHS_QUERY = `query Posts {
 }`;
 
 export async function getStaticPaths() {
-  const dataQuery = await request({
-    query: PATHS_QUERY,
-  });
+  const res = await (
+    await fetch("https://graphql.datocms.com/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
+      },
+      body: JSON.stringify({
+        query: `{
+          allPostsContents(orderBy: _firstPublishedAt_DESC) {
+            id
+            title
+            content {
+              value
+            }
+            tags
+            image {
+              id
+              url
+              alt
+              width
+              height
+            }
+            updatedAt
+            _firstPublishedAt
+          }
+        }
+        `,
+      }),
+    })
+  ).json();
 
-  const postIds = dataQuery["allPosts"].map((item: any) => {
+  const postIds = res.data.allPostsContents.map((item: any) => {
     return {
       params: {
         id: item.id,
@@ -98,11 +127,40 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const dataQuery = await request({
-    query: POSTS_QUERY,
-  });
+  const res = await (
+    await fetch("https://graphql.datocms.com/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
+      },
+      body: JSON.stringify({
+        query: `{
+          allPostsContents(orderBy: _firstPublishedAt_DESC) {
+            id
+            title
+            content {
+              value
+            }
+            tags
+            image {
+              id
+              url
+              alt
+              width
+              height
+            }
+            updatedAt
+            _firstPublishedAt
+          }
+        }
+        `,
+      }),
+    })
+  ).json();
 
-  const [data] = dataQuery["allPosts"].filter((item: any) => {
+  const [data] = res.data.allPostsContents.filter((item: any) => {
     return item.id === params.id;
   });
 
