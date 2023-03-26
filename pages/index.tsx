@@ -2,27 +2,49 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHead from "components/PageHead";
 import Typewriter from "typewriter-effect";
-import Photo from "public/dewo.jpg";
 import Layout from "components/Layout";
 import GitHub from "components/icons/GitHub";
 import LinkedIn from "components/icons/linkedin";
 import Mail from "components/icons/mail";
 import Instagram from "components/icons/instagram";
+import type { GetStaticProps, NextPage } from "next";
 
-const Home = () => {
+interface homeData {
+  github: string;
+  linkedin: string;
+  mail: string;
+  instagram: string;
+  photo: {
+    width: number;
+    height: number;
+    alt: string;
+    url: string;
+  };
+  pageTitle: string;
+  pageTags: string[];
+  pageDescription: string;
+  imageLinkPreview: {
+    url: string;
+  };
+}
+
+const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
   return (
     <>
       <PageHead
-        headTitle="Home | Dewantoro Triatmojo"
-        headDescription="This is Dewantoro Triatmojo's personal website!"
-        headTag="home, personal website, portofolio, curriculum vitae"
+        pageTitle={homeData.pageTitle}
+        pageDescription={homeData.pageDescription}
+        pageTag={homeData.pageTags}
+        linkPreviewImage={homeData.imageLinkPreview.url}
       />
       <Layout>
         <div className="flex h-fit min-h-[calc(100vh-5rem)] w-full flex-col items-center justify-center gap-y-6 py-12 sm:flex-row sm:gap-x-8 lg:gap-x-12">
           {/* My Photo */}
           <Image
-            src={Photo}
-            alt="Dewo"
+            src={homeData.photo.url}
+            alt={homeData.photo.alt}
+            width={homeData.photo.width}
+            height={homeData.photo.height}
             className="w-64 rounded-[50%] border-8 border-solid border-[#208ce5] md:w-72 2xl:w-96"
             priority={true}
           />
@@ -67,24 +89,24 @@ const Home = () => {
 
             {/* My Social Media */}
             <div className="flex flex-row justify-center gap-x-6 2xl:gap-x-10">
-              <Link href="https://github.com/dewodt">
-                <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
-                  <GitHub style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9" />
+              <Link href={homeData.github}>
+                <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
+                  <GitHub style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
                 </button>
               </Link>
-              <Link href="https://github.com/dewodt">
-                <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
-                  <LinkedIn style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9" />
+              <Link href={homeData.linkedin}>
+                <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
+                  <LinkedIn style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
                 </button>
               </Link>
-              <Link href="https://github.com/dewodt">
-                <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
-                  <Mail style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9" />
+              <Link href={homeData.mail}>
+                <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
+                  <Mail style="w-8 fill-[white] group-hover:fill-[#208ce5] duration-300 ease-in-out 2xl:w-9" />
                 </button>
               </Link>
-              <Link href="https://github.com/dewodt">
-                <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
-                  <Instagram style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9" />
+              <Link href={homeData.instagram}>
+                <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
+                  <Instagram style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
                 </button>
               </Link>
             </div>
@@ -96,3 +118,45 @@ const Home = () => {
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps<{
+  homeData: homeData;
+}> = async () => {
+  const res = await (
+    await fetch("https://graphql.datocms.com/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
+      },
+      body: JSON.stringify({
+        query: `{
+          homePage {
+            photo {
+              alt
+              url
+              height
+              width
+            }
+            github
+            linkedin
+            mail
+            instagram
+            pageTitle
+            pageTags
+            pageDescription
+            imageLinkPreview {
+              url
+            }
+          }
+        }
+        `,
+      }),
+    })
+  ).json();
+
+  return {
+    props: { homeData: res.data.homePage },
+  };
+};
