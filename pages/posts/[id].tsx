@@ -1,6 +1,6 @@
 import Image from "next/image";
 import NavBar from "components/NavBar";
-import PageHead from "components/pagehead";
+import PageHead from "components/PageHead";
 import { StructuredText } from "react-datocms";
 
 export default function Article({ data }: any) {

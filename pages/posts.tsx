@@ -1,6 +1,6 @@
 import ArticleCard from "components/articlecard";
 import NavBar from "components/NavBar";
-import PageHead from "components/pagehead";
+import PageHead from "components/PageHead";
 import SearchBar from "components/searchbar";
 import { useState, useEffect } from "react";
 import AOS from "aos";

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PageHead from "components/pagehead";
+import PageHead from "components/PageHead";
 
 export default function Custom404() {
   return (

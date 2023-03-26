@@ -1,4 +1,4 @@
-import PageHead from "components/pagehead";
+import PageHead from "components/PageHead";
 
 export default function Custom500() {
   return (
