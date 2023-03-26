@@ -38,7 +38,7 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
         linkPreviewImage={homeData.imageLinkPreview.url}
       />
       <Layout>
-        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-full flex-col items-center justify-center gap-y-6 py-12 sm:flex-row sm:gap-x-8 lg:gap-x-12">
+        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center justify-center gap-y-6 py-12 sm:flex-row sm:gap-x-8 lg:gap-x-12">
           {/* My Photo */}
           <Image
             src={homeData.photo.url}
@@ -70,20 +70,20 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
               </div>
               <div className="mb-6 2xl:mb-8">
                 My full name is{" "}
-                <span className="text-[#208ce5]">Dewantoro Triatmojo</span>
+                <span className="text-[#208ce5]">Dewantoro Triatmojo.</span>
               </div>
               <div className="mb-6 2xl:mb-8">
                 Currently studying{" "}
                 <span className="text-[#208ce5]">Informatics</span> in
                 <span className="text-[#208ce5]">
                   {" "}
-                  Bandung Institute of Technology
+                  Bandung Institute of Technology.
                 </span>
               </div>
               <div>
-                Intrested in{" "}
+                Interested in{" "}
                 <span className="text-[#208ce5]">Software Engineering </span>and{" "}
-                <span className="text-[#208ce5]">Web Development</span>
+                <span className="text-[#208ce5]">Artificial Intelligence.</span>
               </div>
             </div>
 
