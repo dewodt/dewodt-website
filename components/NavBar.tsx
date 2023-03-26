@@ -1,56 +1,97 @@
-import { useState } from "react";
+import Logo from "public/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "public/logo.svg";
-import Item from "components/item";
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 
-export default function NavBar({ onPage }: { onPage: string }) {
+const NavBar = () => {
   const [expandNav, setExpandNav] = useState(false);
+  const navBarRef = useRef<HTMLElement>(null);
+  const router = useRouter();
 
-  const expandNavStyle =
-    "flex flex-col gap-y-4 absolute top-20 z-10 w-screen py-5 px-6 bg-[#1F2133] md:static md:flex md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:ml-[15vw]";
-  const notExpandNavStyle =
-    "hidden md:static md:flex md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:ml-[15vw]";
+  // Close Navbar when user clicks outside navbar
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      // If Userclick is in the black background stuff
+      if (!navBarRef.current?.contains(event.target as Node)) {
+        setExpandNav(false);
+      }
+    }
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <nav className="h-20 w-screen sm:flex sm:items-center">
-      <Link href="/">
-        <button className="absolute top-[calc(2.5rem-1.125rem)] left-6">
-          <Image className="w-9" src={Logo} alt="Dewo's Logo" />
+    <nav
+      ref={navBarRef}
+      className="relative flex h-20 w-screen items-center justify-between px-6"
+    >
+      {/* Dewo Logo */}
+      <Link className="h-10 w-10" href="/">
+        <button className="h-10 w-10">
+          <Image className="h-10 w-10" src={Logo} alt="DT Icon" />
         </button>
       </Link>
-      <ul className={expandNav ? expandNavStyle : notExpandNavStyle}>
-        <Item url="/" page="Home" onPage={onPage} />
-        <Item url="/posts" page="Posts" onPage={onPage} />
-        <Item url="/comingsoon" page="Coming Soon" onPage={onPage} />
+
+      {/* Navigation */}
+      <ul
+        className={`absolute top-20 left-0 z-50 flex w-screen flex-col gap-y-4 bg-[#1F2133] py-5 px-6 duration-700 ease-in-out md:static md:ml-20 md:translate-x-0 md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:transition-none lg:ml-48 ${
+          expandNav ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <li className="list-none text-xl font-semibold 2xl:text-2xl">
+          <Link
+            href="/"
+            className={`lg:duration-300 lg:ease-in-out lg:hover:text-[#208ce5]
+              ${router.pathname === "/" ? "text-[#208ce5]" : "text-white"}
+            `}
+          >
+            Home
+          </Link>
+        </li>
+        <li className="list-none text-xl font-semibold 2xl:text-2xl">
+          <Link
+            href="/posts"
+            className={`lg:duration-300 lg:ease-in-out lg:hover:text-[#208ce5]
+              ${
+                router.pathname.includes("/posts")
+                  ? "text-[#208ce5]"
+                  : "text-white"
+              }
+            `}
+          >
+            Posts
+          </Link>
+        </li>
       </ul>
-      {expandNav ? (
-        <button
-          className="absolute top-[calc(2.5rem-1.125rem)] right-6 md:hidden"
-          onClick={() => setExpandNav(!expandNav)}
-        >
-          <svg
-            className="h-9 fill-white"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 320 512"
-          >
-            <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" />
-          </svg>
-        </button>
-      ) : (
-        <button
-          className="absolute top-[calc(2.5rem-1rem)] right-6 md:hidden"
-          onClick={() => setExpandNav(!expandNav)}
-        >
-          <svg
-            className="h-8 fill-white"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 448 512"
-          >
-            <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
-          </svg>
-        </button>
-      )}
+
+      {/* Open Close Button */}
+      <button
+        className="flex h-[27px] w-[30px] cursor-pointer flex-col gap-y-[6px] md:hidden"
+        onClick={() => setExpandNav(!expandNav)}
+      >
+        <span
+          className={`h-[5px] w-full origin-left rounded-full bg-white opacity-100 transition duration-300 ease-in-out ${
+            expandNav ? "rotate-45 scale-x-105" : "rotate-0 scale-x-100"
+          }`}
+        />
+        <span
+          className={`h-[5px] w-full rounded-full bg-white opacity-100 transition duration-300 ease-in-out ${
+            expandNav ? "opacity-0" : "opacity-100"
+          }`}
+        />
+        <span
+          className={`h-[5px] w-full origin-left rounded-full bg-white opacity-100 transition duration-300 ease-in-out ${
+            expandNav ? "rotate-[-45deg] scale-x-105" : "rotate-0 scale-x-100"
+          }`}
+        />
+      </button>
     </nav>
   );
-}
+};
+
+export default NavBar;
