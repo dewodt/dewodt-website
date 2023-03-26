@@ -26,7 +26,7 @@ const Card = ({ data }: { data: postsContent }) => {
     <Link href={`posts/${data.id}`}>
       <button className="h-fit w-72 rounded-3xl bg-[white] duration-300 ease-in-out lg:hover:-translate-y-1 lg:hover:scale-105 2xl:w-96">
         <Image
-          className="h-[144px] w-full rounded-t-xl object-cover object-center 2xl:h-[192px]"
+          className="h-[144px] w-full rounded-t-3xl object-cover object-center 2xl:h-[192px]"
           priority={false}
           src={data.image.url}
           alt={data.image.alt}

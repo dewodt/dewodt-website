@@ -35,11 +35,13 @@ const Posts: NextPage<{
   postsContent: postsContent[];
   postsPage: postsPage;
 }> = ({ postsContent, postsPage }) => {
+  const [mount, setMount] = useState(false);
   const [filteredData, setFilteredData] = useState(postsContent);
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     AOS.init();
+    setMount(true);
   }, []);
 
   return (
@@ -51,9 +53,15 @@ const Posts: NextPage<{
         linkPreviewImage={postsPage.imageLinkPreview.url}
       />
       <Layout>
-        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center py-12 max-lg:pt-6">
+        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center py-12 pt-6">
           {/* Search Box and Search Count */}
-          <div className="mb-8 flex flex-col items-center gap-y-4">
+          <div
+            className={`mb-8 flex flex-col items-center gap-y-4 duration-1000 ease-out ${
+              mount
+                ? "translate-y-0 opacity-100"
+                : "-translate-y-full opacity-0"
+            }`}
+          >
             <SearchBox
               searchValue={searchValue}
               handleChange={(e: ChangeEvent<HTMLInputElement>) => {
@@ -83,12 +91,14 @@ const Posts: NextPage<{
                 setSearchValue("");
               }}
             />
-            <div className="text-lg font-semibold text-[#208ce5] 2xl:text-xl">
-              {searchValue ? (
-                `${filteredData.length} search result was found`
-              ) : (
-                <br />
-              )}
+            <div
+              className={`text-lg font-semibold text-[#208ce5] duration-300 ease-in-out 2xl:text-xl ${
+                searchValue
+                  ? "pointer-events-auto opacity-100"
+                  : "pointer-events-none opacity-0"
+              }`}
+            >
+              {`${filteredData.length} search result was found`}
             </div>
           </div>
 
@@ -97,9 +107,9 @@ const Posts: NextPage<{
             {filteredData.map((item: any) => (
               <div
                 key={item.id}
-                data-aos="slide-up"
+                data-aos="fade-up"
                 data-aos-once="true"
-                data-aos-duration="400"
+                data-aos-duration="800"
                 data-aos-easing="ease-out-quad"
                 data-aos-anchor-placement="top-bottom"
               >
