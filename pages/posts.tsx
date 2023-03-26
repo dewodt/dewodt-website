@@ -1,84 +1,125 @@
-import ArticleCard from "components/articlecard";
-import NavBar from "components/NavBar";
+import Card from "components/Card";
 import PageHead from "components/PageHead";
-import SearchBar from "components/searchbar";
-import { useState, useEffect } from "react";
+import SearchBox from "components/SearchBox";
+import Layout from "components/Layout";
+import { useState, useEffect, ChangeEvent } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import type { GetStaticProps, NextPage } from "next";
 
-export default function Posts({ posts }: any) {
-  const [filteredData, setFilteredData] = useState(posts);
-  const [countResult, setCountResult] = useState(0);
-  const [isEmpty, setIsEmpty] = useState(true);
+interface postsContent {
+  id: number;
+  title: string;
+  content: any;
+  tags: string[];
+  image: {
+    id: number;
+    url: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  updatedAt: string;
+  _firstPublishedAt: string;
+}
+
+interface postsPage {
+  pageTitle: string;
+  pageTags: string[];
+  pageDescription: string;
+  imageLinkPreview: {
+    url: string;
+  };
+}
+
+const Posts: NextPage<{
+  postsContent: postsContent[];
+  postsPage: postsPage;
+}> = ({ postsContent, postsPage }) => {
+  const [filteredData, setFilteredData] = useState(postsContent);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     AOS.init();
   }, []);
 
-  function handleChange() {
-    const inputValue = (
-      document.getElementById("input") as HTMLInputElement
-    ).value.toLowerCase();
-    if (inputValue === "") {
-      setFilteredData(posts);
-      setCountResult(0);
-      setIsEmpty(true);
-    } else {
-      const newData = posts.filter((item: any) => {
-        const itemTitle = item.title.toLowerCase();
-        const itemDate = new Date(item._firstPublishedAt)
-          .toLocaleString("en-UK", { dateStyle: "long" })
-          .toLowerCase();
-        return itemTitle.includes(inputValue) || itemDate.includes(inputValue);
-      });
-      setFilteredData(newData);
-      setCountResult(newData.length);
-      setIsEmpty(false);
-    }
-  }
-
-  function handleReset() {
-    (document.getElementById("input") as HTMLInputElement).value = "";
-    setFilteredData(posts);
-    setCountResult(0);
-    setIsEmpty(true);
-  }
-
   return (
     <>
       <PageHead
-        headTitle="Posts | Dewantoro Triatmojo"
-        headDescription="These are posts made by Dewantoro Triatmojo"
-        headTag="posts, blog, announcement"
+        pageTitle={postsPage.pageTitle}
+        pageDescription={postsPage.pageDescription}
+        pageTag={postsPage.pageTags}
+        linkPreviewImage={postsPage.imageLinkPreview.url}
       />
-      <NavBar onPage="Posts" />
-      <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center pt-6 pb-12">
-        <div className="mb-8 flex flex-col items-center gap-y-4">
-          <SearchBar handleChange={handleChange} handleReset={handleReset} />
-          <div className="text-lg font-semibold text-[#208ce5] 2xl:text-xl">
-            {!isEmpty ? `${countResult} search result was found` : <br />}
+      <Layout>
+        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center py-12 max-lg:pt-6">
+          {/* Search Box and Search Count */}
+          <div className="mb-8 flex flex-col items-center gap-y-4">
+            <SearchBox
+              searchValue={searchValue}
+              handleChange={(e: ChangeEvent<HTMLInputElement>) => {
+                // Update Value
+                setSearchValue(e.target.value);
+
+                // Updated Filteredd Data
+                const newInputValue = e.target.value.toLowerCase();
+                if (newInputValue === "") {
+                  setFilteredData(postsContent);
+                } else {
+                  const newData = postsContent.filter((item: any) => {
+                    const itemTitle = item.title.toLowerCase();
+                    const itemDate = new Date(item._firstPublishedAt)
+                      .toLocaleString("en-UK", { dateStyle: "long" })
+                      .toLowerCase();
+                    return (
+                      itemTitle.includes(newInputValue) ||
+                      itemDate.includes(newInputValue)
+                    );
+                  });
+                  setFilteredData(newData);
+                }
+              }}
+              handleReset={() => {
+                setFilteredData(postsContent);
+                setSearchValue("");
+              }}
+            />
+            <div className="text-lg font-semibold text-[#208ce5] 2xl:text-xl">
+              {searchValue ? (
+                `${filteredData.length} search result was found`
+              ) : (
+                <br />
+              )}
+            </div>
+          </div>
+
+          {/* Posts */}
+          <div className="grid justify-center gap-x-14 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredData.map((item: any) => (
+              <div
+                key={item.id}
+                data-aos="slide-up"
+                data-aos-once="true"
+                data-aos-duration="400"
+                data-aos-easing="ease-out-quad"
+                data-aos-anchor-placement="top-bottom"
+              >
+                <Card data={item} />
+              </div>
+            ))}
           </div>
         </div>
-        <div className="grid justify-center gap-x-14 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredData.map((item: any) => (
-            <div
-              key={item.id}
-              data-aos="slide-up"
-              data-aos-once="true"
-              data-aos-duration="400"
-              data-aos-easing="ease-out-quad"
-              data-aos-anchor-placement="center-bottom"
-            >
-              <ArticleCard data={item} />
-            </div>
-          ))}
-        </div>
-      </div>
+      </Layout>
     </>
   );
-}
+};
 
-export async function getStaticProps() {
+export default Posts;
+
+export const getStaticProps: GetStaticProps<{
+  postsContent: postsContent[];
+  postsPage: postsPage;
+}> = async () => {
   const res = await (
     await fetch("https://graphql.datocms.com/", {
       method: "POST",
@@ -106,6 +147,14 @@ export async function getStaticProps() {
             updatedAt
             _firstPublishedAt
           }
+          postsPage {
+            pageTitle
+            pageTags
+            pageDescription
+            imageLinkPreview {
+              url
+            }
+          }
         }
         `,
       }),
@@ -113,6 +162,9 @@ export async function getStaticProps() {
   ).json();
 
   return {
-    props: { posts: res.data.allPostsContents },
+    props: {
+      postsContent: res.data.allPostsContents,
+      postsPage: res.data.postsPage,
+    },
   };
-}
+};

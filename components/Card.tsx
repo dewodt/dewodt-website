@@ -3,11 +3,23 @@ import Link from "next/link";
 import LinesEllipsis from "react-lines-ellipsis";
 import { render } from "datocms-structured-text-to-plain-text";
 
-export default function ArticleCard({ data }: any) {
-  const publishedDate = new Date(data._firstPublishedAt).toLocaleString(
-    "en-UK",
-    { dateStyle: "long" }
-  );
+interface postsContent {
+  id: number;
+  title: string;
+  content: any;
+  tags: string[];
+  image: {
+    id: number;
+    url: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  updatedAt: string;
+  _firstPublishedAt: string;
+}
+
+const Card = ({ data }: { data: postsContent }) => {
   const contentPreview = render(data.content) as string | undefined;
 
   return (
@@ -36,7 +48,9 @@ export default function ArticleCard({ data }: any) {
           {data.title}
         </p>
         <p className="mb-2 text-left text-sm font-semibold leading-tight text-[#1A1C2B] 2xl:text-base 2xl:leading-tight">
-          {publishedDate}
+          {new Date(data._firstPublishedAt).toLocaleString("en-UK", {
+            dateStyle: "long",
+          })}
         </p>
         <LinesEllipsis
           text={contentPreview}
@@ -47,4 +61,6 @@ export default function ArticleCard({ data }: any) {
       </button>
     </Link>
   );
-}
+};
+
+export default Card;
