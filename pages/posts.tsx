@@ -8,18 +8,17 @@ import "aos/dist/aos.css";
 import type { GetStaticProps, NextPage } from "next";
 
 interface postsContent {
-  id: number;
+  id: string;
   title: string;
   content: any;
   tags: string[];
   image: {
-    id: number;
+    id: string;
     url: string;
     alt: string;
     width: number;
     height: number;
   };
-  updatedAt: string;
   _firstPublishedAt: string;
 }
 
@@ -144,7 +143,6 @@ export const getStaticProps: GetStaticProps<{
               width
               height
             }
-            updatedAt
             _firstPublishedAt
           }
           postsPage {

@@ -1,84 +1,80 @@
 import Image from "next/image";
-import NavBar from "components/NavBar";
 import PageHead from "components/PageHead";
 import { StructuredText } from "react-datocms";
+import Layout from "components/Layout";
+import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 
-export default function Article({ data }: any) {
-  const publishedDate = new Date(data._firstPublishedAt).toLocaleString(
-    "en-UK",
-    { dateStyle: "long" }
-  );
+interface ArticleData {
+  id: string;
+  title: string;
+  content: any;
+  tags: string[];
+  image: {
+    id: string;
+    url: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  _firstPublishedAt: string;
+  pageTitle: string;
+  pageDescription: string;
+  pageTags: string[];
+  imageLinkPreview: {
+    url: string;
+  };
+}
 
+const Article: NextPage<{ articleData: ArticleData }> = ({ articleData }) => {
   return (
     <>
       <PageHead
-        headTitle={`${data.title} | Dewantoro Triatmojo`}
-        headDescription={data.headDescription}
-        headTag={data.tags.join(", ")}
+        pageTitle={articleData.pageTitle}
+        pageDescription={articleData.pageDescription}
+        pageTag={articleData.pageTags}
+        linkPreviewImage={articleData.image.url}
       />
-      <NavBar onPage="Posts" />
-      <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center pt-6 pb-12">
-        <div className="w-[80vw] sm:w-[60vw] lg:w-[50vw] 2xl:w-[40vw]">
-          <p className="mb-2 text-3xl font-bold text-[#208ce5] 2xl:text-4xl">
-            {data.title}
-          </p>
-          <p className="mb-2 text-base font-semibold 2xl:text-lg">
-            {publishedDate}
-          </p>
-          <div className="mb-7 flex flex-row flex-wrap justify-start gap-x-4 gap-y-3">
-            {data.tags.map((item: string) => (
-              <div
-                className="rounded-md bg-[#208ce5] py-1 px-3 text-sm font-semibold 2xl:text-base"
-                key={item}
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-          <Image
-            className="mb-7 h-auto w-full rounded-2xl sm:rounded-3xl"
-            src={data.image.url}
-            alt={data.image.alt}
-            width={data.image.width}
-            height={data.image.height}
-          />
-          <div className="text-justify text-lg leading-relaxed 2xl:text-xl 2xl:leading-relaxed">
-            <StructuredText data={data.content} />
+      <Layout>
+        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center pt-6 pb-12">
+          <div className="w-[80vw] sm:w-[60vw] lg:w-[50vw] 2xl:w-[40vw]">
+            <p className="mb-2 text-3xl font-bold text-[#208ce5] 2xl:text-4xl">
+              {articleData.title}
+            </p>
+            <p className="mb-2 text-base font-semibold 2xl:text-lg">
+              {new Date(articleData._firstPublishedAt).toLocaleString("en-UK", {
+                dateStyle: "long",
+              })}
+            </p>
+            <div className="mb-7 flex flex-row flex-wrap justify-start gap-x-4 gap-y-3">
+              {articleData.tags.map((item: string) => (
+                <div
+                  className="rounded-md bg-[#208ce5] py-1 px-3 text-sm font-semibold 2xl:text-base"
+                  key={item}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+            <Image
+              className="mb-7 h-auto w-full rounded-2xl sm:rounded-3xl"
+              src={articleData.image.url}
+              alt={articleData.image.alt}
+              width={articleData.image.width}
+              height={articleData.image.height}
+            />
+            <div className="text-justify text-lg leading-relaxed 2xl:text-xl 2xl:leading-relaxed">
+              <StructuredText data={articleData.content} />
+            </div>
           </div>
         </div>
-      </div>
+      </Layout>
     </>
   );
-}
+};
 
-const POSTS_QUERY = `query Posts {
-  allPosts(orderBy: _firstPublishedAt_DESC) {
-    id
-    title
-    content {
-      value
-    }
-    tags
-    image {
-      id
-      url
-      alt
-      width
-      height
-    }
-    updatedAt
-    _firstPublishedAt
-    headDescription
-  }
-}`;
+export default Article;
 
-const PATHS_QUERY = `query Posts {
-  allPosts(orderBy: _firstPublishedAt_DESC) {
-    id
-  }
-}`;
-
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const res = await (
     await fetch("https://graphql.datocms.com/", {
       method: "POST",
@@ -91,20 +87,6 @@ export async function getStaticPaths() {
         query: `{
           allPostsContents(orderBy: _firstPublishedAt_DESC) {
             id
-            title
-            content {
-              value
-            }
-            tags
-            image {
-              id
-              url
-              alt
-              width
-              height
-            }
-            updatedAt
-            _firstPublishedAt
           }
         }
         `,
@@ -112,7 +94,7 @@ export async function getStaticPaths() {
     })
   ).json();
 
-  const postIds = res.data.allPostsContents.map((item: any) => {
+  const postIds = res.data.allPostsContents.map((item: ArticleData) => {
     return {
       params: {
         id: item.id,
@@ -124,9 +106,11 @@ export async function getStaticPaths() {
     paths: postIds,
     fallback: "blocking",
   };
-}
+};
 
-export async function getStaticProps({ params }: any) {
+export const getStaticProps: GetStaticProps<{
+  articleData: ArticleData;
+}> = async ({ params }) => {
   const res = await (
     await fetch("https://graphql.datocms.com/", {
       method: "POST",
@@ -151,8 +135,13 @@ export async function getStaticProps({ params }: any) {
               width
               height
             }
-            updatedAt
             _firstPublishedAt
+            pageTitle
+            pageDescription
+            pageTags
+            imageLinkPreview {
+              url
+            }
           }
         }
         `,
@@ -160,8 +149,8 @@ export async function getStaticProps({ params }: any) {
     })
   ).json();
 
-  const [data] = res.data.allPostsContents.filter((item: any) => {
-    return item.id === params.id;
+  const [data] = res.data.allPostsContents.filter((item: ArticleData) => {
+    return item.id === params?.id;
   });
 
   // If page is deleted or unpublished
@@ -173,6 +162,6 @@ export async function getStaticProps({ params }: any) {
 
   // If page is available
   return {
-    props: { data },
+    props: { articleData: data },
   };
-}
+};

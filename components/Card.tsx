@@ -4,12 +4,12 @@ import LinesEllipsis from "react-lines-ellipsis";
 import { render } from "datocms-structured-text-to-plain-text";
 
 interface postsContent {
-  id: number;
+  id: string;
   title: string;
   content: any;
   tags: string[];
   image: {
-    id: number;
+    id: string;
     url: string;
     alt: string;
     width: number;
