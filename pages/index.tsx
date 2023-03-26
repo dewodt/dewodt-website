@@ -3,10 +3,10 @@ import Link from "next/link";
 import PageHead from "components/PageHead";
 import Typewriter from "typewriter-effect";
 import Layout from "components/Layout";
-import GitHub from "components/icons/GitHub";
-import LinkedIn from "components/icons/linkedin";
-import Mail from "components/icons/mail";
-import Instagram from "components/icons/instagram";
+import GitHubIcon from "components/icons/GitHubIcon";
+import LinkedInIcon from "components/icons/LinkedInIcon";
+import MailIcon from "components/icons/MailIcon";
+import InstagramIcon from "components/icons/InstagramIcon";
 import type { GetStaticProps, NextPage } from "next";
 
 interface homeData {
@@ -91,22 +91,22 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
             <div className="flex flex-row justify-center gap-x-6 2xl:gap-x-10">
               <Link href={homeData.github}>
                 <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
-                  <GitHub style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
+                  <GitHubIcon style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
                 </button>
               </Link>
               <Link href={homeData.linkedin}>
                 <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
-                  <LinkedIn style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
+                  <LinkedInIcon style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
                 </button>
               </Link>
               <Link href={homeData.mail}>
                 <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
-                  <Mail style="w-8 fill-[white] group-hover:fill-[#208ce5] duration-300 ease-in-out 2xl:w-9" />
+                  <MailIcon style="w-8 fill-[white] group-hover:fill-[#208ce5] duration-300 ease-in-out 2xl:w-9" />
                 </button>
               </Link>
               <Link href={homeData.instagram}>
                 <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
-                  <Instagram style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
+                  <InstagramIcon style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
                 </button>
               </Link>
             </div>

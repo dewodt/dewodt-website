@@ -1,4 +1,4 @@
-const LinkedIn = ({ style }: { style: string }) => {
+const LinkedInIcon = ({ style }: { style: string }) => {
   return (
     <svg
       viewBox="0 0 448 512"
@@ -10,8 +10,8 @@ const LinkedIn = ({ style }: { style: string }) => {
   );
 };
 
-LinkedIn.defaultProps = {
+LinkedInIcon.defaultProps = {
   style: "fill-white",
 };
 
-export default LinkedIn;
+export default LinkedInIcon;

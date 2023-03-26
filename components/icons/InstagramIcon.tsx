@@ -1,4 +1,4 @@
-const Instagram = ({ style }: { style: string }) => {
+const InstagramIcon = ({ style }: { style: string }) => {
   return (
     <svg
       viewBox="0 0 448 512"
@@ -10,8 +10,8 @@ const Instagram = ({ style }: { style: string }) => {
   );
 };
 
-Instagram.defaultProps = {
+InstagramIcon.defaultProps = {
   style: "fill-white",
 };
 
-export default Instagram;
+export default InstagramIcon;

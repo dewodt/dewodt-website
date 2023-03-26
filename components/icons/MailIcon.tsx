@@ -1,4 +1,4 @@
-const Mail = ({ style }: { style: string }) => {
+const MailIcon = ({ style }: { style: string }) => {
   return (
     <svg
       viewBox="0 0 512 512"
@@ -10,8 +10,8 @@ const Mail = ({ style }: { style: string }) => {
   );
 };
 
-Mail.defaultProps = {
+MailIcon.defaultProps = {
   style: "fill-white",
 };
 
-export default Mail;
+export default MailIcon;

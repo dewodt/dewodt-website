@@ -1,4 +1,4 @@
-const GitHub = ({ style }: { style: string }) => {
+const GitHubIcon = ({ style }: { style: string }) => {
   return (
     <svg
       viewBox="0 0 496 512"
@@ -10,8 +10,8 @@ const GitHub = ({ style }: { style: string }) => {
   );
 };
 
-GitHub.defaultProps = {
+GitHubIcon.defaultProps = {
   style: "fill-white",
 };
 
-export default GitHub;
+export default GitHubIcon;
