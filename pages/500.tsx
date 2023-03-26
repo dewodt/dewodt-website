@@ -1,4 +1,5 @@
 import PageHead from "components/PageHead";
+import { useState, useEffect } from "react";
 import type { GetStaticProps, NextPage } from "next";
 
 interface error500Data {
@@ -15,6 +16,12 @@ interface error500Data {
 const Custom500: NextPage<{ error500Data: error500Data }> = ({
   error500Data,
 }) => {
+  const [mount, setMount] = useState(false);
+
+  useEffect(() => {
+    setMount(true);
+  }, []);
+
   return (
     <>
       <PageHead
@@ -23,7 +30,11 @@ const Custom500: NextPage<{ error500Data: error500Data }> = ({
         pageTag={error500Data.pageTags}
         linkPreviewImage={error500Data.imageLinkPreview.url}
       />
-      <div className="flex h-[100vh] flex-col items-center justify-center px-3 text-center">
+      <div
+        className={`flex h-[100vh] flex-col items-center justify-center px-3 text-center duration-1000 ease-in-out ${
+          mount ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <p className="text-3xl font-bold leading-normal text-[#208ce5] 2xl:text-5xl 2xl:leading-normal">
           {error500Data.line1}
         </p>

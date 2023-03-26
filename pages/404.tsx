@@ -1,5 +1,6 @@
 import Link from "next/link";
 import PageHead from "components/PageHead";
+import { useState, useEffect } from "react";
 import type { GetStaticProps, NextPage } from "next";
 
 interface error404Data {
@@ -17,6 +18,12 @@ interface error404Data {
 const Custom404: NextPage<{ error404Data: error404Data }> = ({
   error404Data,
 }) => {
+  const [mount, setMount] = useState(false);
+
+  useEffect(() => {
+    setMount(true);
+  }, []);
+
   return (
     <>
       <PageHead
@@ -25,7 +32,11 @@ const Custom404: NextPage<{ error404Data: error404Data }> = ({
         pageTag={error404Data.pageTags}
         linkPreviewImage={error404Data.imageLinkPreview.url}
       />
-      <div className="flex h-[100vh] flex-col items-center justify-center px-3 text-center">
+      <div
+        className={`flex h-[100vh] flex-col items-center justify-center px-3 text-center duration-1000 ease-in-out ${
+          mount ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <p className="text-3xl font-bold leading-normal text-[#208ce5] 2xl:text-5xl 2xl:leading-normal">
           {error404Data.line1}
         </p>
