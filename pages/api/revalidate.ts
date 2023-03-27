@@ -25,9 +25,18 @@ export default async function handler(
 
     // Get record id to revalidate
     const idToRevalidate = body.idToRevalidate;
-    if (idToRevalidate) {
-      await res.revalidate("/posts");
-      await res.revalidate(`/posts/${idToRevalidate}`);
+    const pageToRevalidate = body.pageToRevalidate;
+
+    // For single instance page
+    if (!idToRevalidate && pageToRevalidate) {
+      await res.revalidate(`/${pageToRevalidate}`);
+      return res.status(200).json({ message: "Success revalidating" });
+    }
+
+    // For multiple instance page
+    if (idToRevalidate && pageToRevalidate) {
+      await res.revalidate(`/${pageToRevalidate}`);
+      await res.revalidate(`/${pageToRevalidate}/${idToRevalidate}`);
       return res.status(200).json({ message: "Success revalidating" });
     }
   } catch (err) {
