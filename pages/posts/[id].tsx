@@ -2,7 +2,12 @@ import Image from "next/image";
 import PageHead from "components/PageHead";
 import { StructuredText } from "react-datocms";
 import Layout from "components/Layout";
-import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
+import type {
+  NextPage,
+  GetStaticPaths,
+  GetStaticProps,
+  GetStaticPropsContext,
+} from "next";
 
 interface ArticleData {
   id: string;
@@ -110,7 +115,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<{
   articleData: ArticleData;
-}> = async ({ params }) => {
+}> = async (context: GetStaticPropsContext) => {
   const res = await (
     await fetch("https://graphql.datocms.com/", {
       method: "POST",
@@ -149,9 +154,9 @@ export const getStaticProps: GetStaticProps<{
     })
   ).json();
 
-  const [data] = res.data.allPostsContents.filter((item: ArticleData) => {
-    return item.id === params?.id;
-  });
+  const [data] = res.data.allPostsContents.filter(
+    (item: ArticleData) => item.id === context.params?.id
+  );
 
   // If page is deleted or unpublished
   if (!data) {
