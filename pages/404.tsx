@@ -1,23 +1,91 @@
 import Link from "next/link";
-import PageHead from "components/pagehead";
+import PageHead from "components/PageHead";
+import { useState, useEffect } from "react";
+import type { GetStaticProps, NextPage } from "next";
 
-export default function Custom404() {
+interface error404Data {
+  line1: string;
+  line2: string;
+  buttonText: string;
+  pageTitle: string;
+  pageTags: string[];
+  pageDescription: string;
+  imageLinkPreview: {
+    url: string;
+  };
+}
+
+const Custom404: NextPage<{ error404Data: error404Data }> = ({
+  error404Data,
+}) => {
+  const [mount, setMount] = useState(false);
+
+  useEffect(() => {
+    setMount(true);
+  }, []);
+
   return (
     <>
-      <PageHead 
-        headTitle="404 | Dewantoro Triatmojo"
-        headDescription="This is error 404 page"
-        headTag="error 404"
+      <PageHead
+        pageTitle={error404Data.pageTitle}
+        pageDescription={error404Data.pageDescription}
+        pageTag={error404Data.pageTags}
+        linkPreviewImage={error404Data.imageLinkPreview.url}
       />
-      <div className="absolute top-0 w-full h-full flex flex-col items-center justify-center text-center px-3 animate-zoomIn animate-ease-out animate-fast">
-        <p className="text-[#208ce5] text-3xl font-bold leading-normal 2xl:text-5xl 2xl:leading-normal">404 - Page Not Found</p>
-        <p className="text-lg font-semibold leading-normal mb-4 2xl:mb-6 2xl:text-2xl 2xl:leading-normal">The page you&apos;re looking for doesn&apos;t exist</p>
+      <div
+        className={`flex h-[100vh] flex-col items-center justify-center px-3 text-center duration-1000 ease-in-out ${
+          mount ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <p className="text-3xl font-bold leading-normal text-[#208ce5] 2xl:text-5xl 2xl:leading-normal">
+          {error404Data.line1}
+        </p>
+        <p className="mb-4 text-lg font-semibold leading-normal 2xl:mb-6 2xl:text-2xl 2xl:leading-normal">
+          {error404Data.line2}
+        </p>
         <Link href="/">
-          <button className="text-lg font-semibold text-white px-5 py-1 rounded-xl 2xl:py-2 2xl:px-8 2xl:text-2xl bg-[#208ce5] duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] hover:text-[#208ce5]">
-            Home
+          <button className="rounded-xl bg-[#208ce5] px-5 py-1 text-lg font-semibold text-white duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] hover:text-[#208ce5] 2xl:py-2 2xl:px-8 2xl:text-2xl">
+            {error404Data.buttonText}
           </button>
         </Link>
       </div>
     </>
   );
-}
+};
+
+export default Custom404;
+
+export const getStaticProps: GetStaticProps<{
+  error404Data: error404Data;
+}> = async () => {
+  const res = await (
+    await fetch("https://graphql.datocms.com/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
+      },
+      body: JSON.stringify({
+        query: `{
+          error404Page {
+            pageTitle
+            pageTags
+            pageDescription
+            imageLinkPreview {
+              url
+            }
+            line1
+            line2
+            buttonText
+          }
+        }        
+        `,
+      }),
+    })
+  ).json();
+
+  return {
+    props: { error404Data: res.data.error404Page },
+  };
+};

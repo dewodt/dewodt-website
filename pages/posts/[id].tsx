@@ -1,88 +1,105 @@
 import Image from "next/image";
-import NavBar from "components/navbar";
-import PageHead from "components/pagehead";
-import { request } from "../../lib/datocms";
+import PageHead from "components/PageHead";
 import { StructuredText } from "react-datocms";
+import Layout from "components/Layout";
+import type {
+  NextPage,
+  GetStaticPaths,
+  GetStaticProps,
+  GetStaticPropsContext,
+} from "next";
 
-export default function Article({ data }: any) {
-  const publishedDate = new Date(data._firstPublishedAt).toLocaleString("en-UK", { dateStyle: "long" });
+interface ArticleData {
+  id: string;
+  title: string;
+  content: any;
+  tags: string[];
+  image: {
+    id: string;
+    url: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  _firstPublishedAt: string;
+  pageTitle: string;
+  pageDescription: string;
+  pageTags: string[];
+  imageLinkPreview: {
+    url: string;
+  };
+}
 
+const Article: NextPage<{ articleData: ArticleData }> = ({ articleData }) => {
   return (
     <>
       <PageHead
-        headTitle={`${data.title} | Dewantoro Triatmojo`}
-        headDescription={data.headDescription}
-        headTag={data.tags.join(", ")}
+        pageTitle={articleData.pageTitle}
+        pageDescription={articleData.pageDescription}
+        pageTag={articleData.pageTags}
+        linkPreviewImage={articleData.image.url}
       />
-      <NavBar onPage="Posts" />
-      <div className="absolute top-20 w-full min-h-[calc(100%-5rem)] flex flex-col items-center pt-6 pb-12">
-        <div className="w-[80vw] sm:w-[60vw] lg:w-[50vw] 2xl:w-[40vw]">
-          <p className="mb-2 text-3xl font-bold text-[#208ce5] 2xl:text-4xl animate-fadeInDown animate-ease-out animate-fast">
-            {data.title}
-          </p>
-          <p className="mb-2 text-base font-semibold 2xl:text-lg animate-fadeInDown animate-ease-out animate-fast">
-            {publishedDate}
-          </p>
-          <div className="mb-7 flex flex-row flex-wrap justify-start gap-x-4 gap-y-3 animate-fadeInDown animate-ease-out animate-fast">
-            {data.tags.map((item: string) => (
-              <div
-                className="rounded-md bg-[#208ce5] py-1 px-3 text-sm font-semibold 2xl:text-base"
-                key={item}
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-          <Image
-            className="mb-7 h-auto w-full rounded-2xl sm:rounded-3xl animate-zoomIn animate-ease-out animate-fast"
-            src={data.image.url}
-            alt={data.image.alt}
-            width={data.image.width}
-            height={data.image.height}
-            loading="eager"
-          />
-          <div className="text-justify text-lg leading-relaxed 2xl:text-xl 2xl:leading-relaxed animate-fadeInUp animate-ease-out animate-fast">
-            <StructuredText data={data.content} />
+      <Layout>
+        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center pt-6 pb-12">
+          <div className="w-[80vw] sm:w-[60vw] lg:w-[50vw] 2xl:w-[40vw]">
+            <p className="mb-2 text-3xl font-bold text-[#208ce5] 2xl:text-4xl">
+              {articleData.title}
+            </p>
+            <p className="mb-2 text-base font-semibold 2xl:text-lg">
+              {new Date(articleData._firstPublishedAt).toLocaleString("en-UK", {
+                dateStyle: "long",
+              })}
+            </p>
+            <div className="mb-7 flex flex-row flex-wrap justify-start gap-x-4 gap-y-3">
+              {articleData.tags.map((item: string) => (
+                <div
+                  className="rounded-md bg-[#208ce5] py-1 px-3 text-sm font-semibold 2xl:text-base"
+                  key={item}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+            <Image
+              className="mb-7 h-auto w-full rounded-2xl sm:rounded-3xl"
+              src={articleData.image.url}
+              alt={articleData.image.alt}
+              width={articleData.image.width}
+              height={articleData.image.height}
+            />
+            <div className="text-justify text-lg leading-relaxed 2xl:text-xl 2xl:leading-relaxed">
+              <StructuredText data={articleData.content} />
+            </div>
           </div>
         </div>
-      </div>
+      </Layout>
     </>
   );
-}
+};
 
-const POSTS_QUERY = `query Posts {
-  allPosts(orderBy: _firstPublishedAt_DESC) {
-    id
-    title
-    content {
-      value
-    }
-    tags
-    image {
-      id
-      url
-      alt
-      width
-      height
-    }
-    updatedAt
-    _firstPublishedAt
-    headDescription
-  }
-}`;
+export default Article;
 
-const PATHS_QUERY = `query Posts {
-  allPosts(orderBy: _firstPublishedAt_DESC) {
-    id
-  }
-}`;
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await (
+    await fetch("https://graphql.datocms.com/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
+      },
+      body: JSON.stringify({
+        query: `{
+          allPostsContents(orderBy: _firstPublishedAt_DESC) {
+            id
+          }
+        }
+        `,
+      }),
+    })
+  ).json();
 
-export async function getStaticPaths() {
-  const dataQuery = await request({
-    query: PATHS_QUERY,
-  });
-
-  const postIds = dataQuery["allPosts"].map((item: any) => {
+  const postIds = res.data.allPostsContents.map((item: ArticleData) => {
     return {
       params: {
         id: item.id,
@@ -94,26 +111,62 @@ export async function getStaticPaths() {
     paths: postIds,
     fallback: "blocking",
   };
-}
+};
 
-export async function getStaticProps({ params }: any) {
-  const dataQuery = await request({
-    query: POSTS_QUERY,
-  });
+export const getStaticProps: GetStaticProps<{
+  articleData: ArticleData;
+}> = async (context: GetStaticPropsContext) => {
+  const res = await (
+    await fetch("https://graphql.datocms.com/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
+      },
+      body: JSON.stringify({
+        query: `{
+          allPostsContents(orderBy: _firstPublishedAt_DESC) {
+            id
+            title
+            content {
+              value
+            }
+            tags
+            image {
+              id
+              url
+              alt
+              width
+              height
+            }
+            _firstPublishedAt
+            pageTitle
+            pageDescription
+            pageTags
+            imageLinkPreview {
+              url
+            }
+          }
+        }
+        `,
+      }),
+    })
+  ).json();
 
-  const [data] = dataQuery["allPosts"].filter((item: any) => {
-    return item.id === params.id;
-  });
+  const [data] = res.data.allPostsContents.filter(
+    (item: ArticleData) => item.id === context.params?.id
+  );
 
   // If page is deleted or unpublished
   if (!data) {
     return {
-      notFound: true
-    }
+      notFound: true,
+    };
   }
 
   // If page is available
   return {
-    props: { data },
+    props: { articleData: data },
   };
-}
+};
