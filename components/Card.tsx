@@ -15,11 +15,10 @@ interface postsContent {
     width: number;
     height: number;
   };
-  updatedAt: string;
   _firstPublishedAt: string;
 }
 
-const Card = ({ data }: { data: postsContent }) => {
+const Card = ({ data, index }: { data: postsContent; index: number }) => {
   const contentPreview = render(data.content) as string | undefined;
 
   return (
@@ -27,7 +26,7 @@ const Card = ({ data }: { data: postsContent }) => {
       <button className="h-fit w-72 rounded-3xl bg-[white] duration-300 ease-in-out lg:hover:-translate-y-1 lg:hover:scale-105 2xl:w-96">
         <Image
           className="h-[144px] w-full rounded-t-3xl object-cover object-center 2xl:h-[192px]"
-          priority={false}
+          priority={index < 6 ? true : false}
           src={data.image.url}
           alt={data.image.alt}
           width={data.image.width}

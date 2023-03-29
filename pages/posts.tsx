@@ -104,7 +104,7 @@ const Posts: NextPage<{
 
           {/* Posts */}
           <div className="grid justify-center gap-x-14 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredData.map((item: any) => (
+            {filteredData.map((item, index) => (
               <div
                 key={item.id}
                 data-aos="fade-up"
@@ -113,7 +113,7 @@ const Posts: NextPage<{
                 data-aos-easing="ease-out-quad"
                 data-aos-anchor-placement="top-bottom"
               >
-                <Card data={item} />
+                <Card data={item} index={index} />
               </div>
             ))}
           </div>
