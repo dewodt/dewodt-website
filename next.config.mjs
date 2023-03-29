@@ -1,19 +1,17 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const config = {
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
   },
-}
-
-module.exports = {
   images: {
     remotePatterns: [
       {
-        hostname: 'www.datocms-assets.com',
+        hostname: "www.datocms-assets.com",
       },
     ],
   },
-}
+};
+export default config;
