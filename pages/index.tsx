@@ -127,22 +127,34 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
               }`}
             >
               <Link href={homeData.github}>
-                <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
+                <button
+                  aria-label="GitHub Button"
+                  className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14"
+                >
                   <GitHubIcon style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
                 </button>
               </Link>
               <Link href={homeData.linkedin}>
-                <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
+                <button
+                  aria-label="LinkedIn Button"
+                  className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14"
+                >
                   <LinkedInIcon style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
                 </button>
               </Link>
               <Link href={homeData.mail}>
-                <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
+                <button
+                  aria-label="Email Button"
+                  className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14"
+                >
                   <MailIcon style="w-8 fill-[white] group-hover:fill-[#208ce5] duration-300 ease-in-out 2xl:w-9" />
                 </button>
               </Link>
               <Link href={homeData.instagram}>
-                <button className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14">
+                <button
+                  aria-label="Instagram Button"
+                  className="group flex h-12 w-12 items-center justify-center rounded-xl bg-[#208ce5] duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[white] 2xl:h-14 2xl:w-14"
+                >
                   <InstagramIcon style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
                 </button>
               </Link>
