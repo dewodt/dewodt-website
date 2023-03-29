@@ -68,7 +68,7 @@ const Posts: NextPage<{
                 // Update Value
                 setSearchValue(e.target.value);
 
-                // Updated Filteredd Data
+                // Updated Filtered Data
                 const newInputValue = e.target.value.toLowerCase();
                 if (newInputValue === "") {
                   setFilteredData(postsContent);
