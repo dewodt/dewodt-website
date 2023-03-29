@@ -9,7 +9,7 @@ const NavBar = () => {
   const navBarRef = useRef<HTMLElement>(null);
   const router = useRouter();
 
-  // Close Navbar when user clicks outside navbar
+  // Close navbar when user clicks outside navbar
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       // If Userclick is in the black background stuff
