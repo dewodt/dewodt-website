@@ -32,7 +32,7 @@ const NavBar = () => {
     >
       {/* Dewo Logo */}
       <Link className="h-10 w-10" href="/">
-        <button className="h-10 w-10">
+        <button aria-label="Dewo's Logo" className="h-10 w-10">
           <Image className="h-10 w-10" src={Logo} alt="DT Icon" />
         </button>
       </Link>
@@ -71,6 +71,7 @@ const NavBar = () => {
 
       {/* Open Close Button */}
       <button
+        aria-label="Menu / Close Button"
         className="flex h-[27px] w-[30px] cursor-pointer flex-col gap-y-[6px] md:hidden"
         onClick={() => setExpandNav(!expandNav)}
       >
