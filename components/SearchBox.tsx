@@ -20,7 +20,11 @@ const SearchBox = ({ searchValue, handleChange, handleReset }: SearchBox) => {
         value={searchValue}
         onChange={handleChange}
       />
-      <button className="mx-3 h-2/3" onClick={handleReset}>
+      <button
+        aria-label="Clear Button"
+        className="mx-3 h-2/3"
+        onClick={handleReset}
+      >
         <XIcon style="h-full fill-[#1A1C2B]" />
       </button>
     </div>
