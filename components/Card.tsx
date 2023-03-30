@@ -31,7 +31,7 @@ const Card = ({ data, index }: { data: postsContent; index: number }) => {
           alt={data.image.alt}
           width={data.image.width}
           height={data.image.height}
-          sizes="(max-width: 1536px) 288px, 384px"
+          sizes="(max-width: 1536px) 432px, 576px"
         />
         <div className="flex flex-col gap-y-2 px-4 pb-4 pt-3">
           <div className="flex flex-row flex-wrap justify-start gap-x-3 gap-y-2">

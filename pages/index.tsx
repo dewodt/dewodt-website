@@ -58,7 +58,7 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
                 : "-translate-y-full opacity-0 sm:-translate-x-full sm:translate-y-0"
             }`}
             priority={true}
-            sizes="(max-width: 768px) 256px, (max-width: 1536px) 288px, 384px"
+            sizes="(max-width: 1024px) 400px, 600px"
           />
 
           {/* My Description */}
