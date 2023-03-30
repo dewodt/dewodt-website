@@ -67,6 +67,7 @@ const Article: NextPage<{ articleData: ArticleData }> = ({ articleData }) => {
               width={articleData.image.width}
               height={articleData.image.height}
               priority={true}
+              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 60vw, (max-width: 1536px) 50vw, 40vw"
             />
             <div className="text-justify text-lg leading-relaxed 2xl:text-xl 2xl:leading-relaxed">
               <StructuredText data={articleData.content} />
