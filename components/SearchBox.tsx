@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import type { ChangeEvent } from "react";
 import SearchIcon from "./icons/SearchIcon";
 import XIcon from "./icons/XIcon";
 
