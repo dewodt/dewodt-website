@@ -9,6 +9,10 @@ import type {
   GetStaticPropsContext,
 } from "next";
 
+interface ArticleID {
+  id: string;
+}
+
 interface ArticleData {
   id: string;
   title: string;
@@ -101,7 +105,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     })
   ).json();
 
-  const postIds = res.data.allPostsContents.map((item: ArticleData) => {
+  const postIds = res.data.allPostsContents.map((item: ArticleID) => {
     return {
       params: {
         id: item.id,
