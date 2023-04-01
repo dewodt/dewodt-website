@@ -2,7 +2,8 @@ import Card from "components/Card";
 import PageHead from "components/PageHead";
 import SearchBox from "components/SearchBox";
 import Layout from "components/Layout";
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect } from "react";
+import type { ChangeEvent } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import type { GetStaticProps, NextPage } from "next";
@@ -53,15 +54,16 @@ const Posts: NextPage<{
         linkPreviewImage={postsPage.imageLinkPreview.url}
       />
       <Layout>
-        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center py-12 pt-6">
+        <div className="absolute top-20 left-0 right-0 flex min-h-[calc(100%-5rem)] w-full flex-col items-center py-12 pt-6">
           {/* Search Box and Search Count */}
-          <div
+          <section
             className={`mb-8 flex flex-col items-center gap-y-4 duration-1000 ease-out ${
               mount
                 ? "translate-y-0 opacity-100"
                 : "-translate-y-full opacity-0"
             }`}
           >
+            <h1 className="hidden">Search Box & Count</h1>
             <SearchBox
               searchValue={searchValue}
               handleChange={(e: ChangeEvent<HTMLInputElement>) => {
@@ -100,10 +102,11 @@ const Posts: NextPage<{
             >
               {`${filteredData.length} search result was found`}
             </div>
-          </div>
+          </section>
 
           {/* Posts */}
-          <div className="grid justify-center gap-x-14 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          <section className="grid justify-center gap-x-14 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            <h1 className="hidden">Posts Articles</h1>
             {filteredData.map((item, index) => (
               <div
                 key={item.id}
@@ -116,7 +119,7 @@ const Posts: NextPage<{
                 <Card data={item} index={index} />
               </div>
             ))}
-          </div>
+          </section>
         </div>
       </Layout>
     </>

@@ -23,7 +23,7 @@ const Card = ({ data, index }: { data: postsContent; index: number }) => {
 
   return (
     <Link href={`posts/${data.id}`}>
-      <button className="h-fit w-72 rounded-3xl bg-[white] duration-300 ease-in-out lg:hover:-translate-y-1 lg:hover:scale-105 2xl:w-96">
+      <article className="h-fit w-72 rounded-3xl bg-[white] duration-300 ease-in-out lg:hover:-translate-y-1 lg:hover:scale-105 2xl:w-96">
         <Image
           className="h-[144px] w-full rounded-t-3xl object-cover object-center 2xl:h-[192px]"
           priority={index < 6 ? true : false}
@@ -45,23 +45,25 @@ const Card = ({ data, index }: { data: postsContent; index: number }) => {
             ))}
           </div>
           <div>
-            <p className="text-left text-xl font-bold leading-tight text-[#1A1C2B] line-clamp-1 2xl:text-2xl 2xl:leading-tight">
+            <h1 className="text-left text-xl font-bold leading-tight text-[#1A1C2B] line-clamp-1 2xl:text-2xl 2xl:leading-tight">
               {data.title}
-            </p>
+            </h1>
             <p className="text-left text-sm font-semibold leading-tight text-[#1A1C2B] 2xl:text-base 2xl:leading-tight">
               {new Date(data._firstPublishedAt).toLocaleString("en-UK", {
                 dateStyle: "long",
               })}
             </p>
           </div>
-          <LinesEllipsis
-            text={contentPreview}
-            maxLine="3"
-            ellipsis="..."
-            className="text-justify text-sm font-normal leading-tight text-[#1A1C2B] 2xl:text-base 2xl:leading-tight"
-          />
+          <p>
+            <LinesEllipsis
+              text={contentPreview}
+              maxLine="3"
+              ellipsis="..."
+              className="text-justify text-sm font-normal leading-tight text-[#1A1C2B] 2xl:text-base 2xl:leading-tight"
+            />
+          </p>
         </div>
-      </button>
+      </article>
     </Link>
   );
 };

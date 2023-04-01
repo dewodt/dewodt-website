@@ -33,16 +33,16 @@ const Custom404: NextPage<{ error404Data: error404Data }> = ({
         linkPreviewImage={error404Data.imageLinkPreview.url}
       />
       <div
-        className={`flex h-[100vh] flex-col items-center justify-center px-3 text-center duration-1000 ease-in-out ${
+        className={`absolute top-0 left-0 right-0 flex h-full w-full flex-col items-center justify-center px-3 text-center duration-1000 ease-in-out ${
           mount ? "opacity-100" : "opacity-0"
         }`}
       >
-        <p className="text-3xl font-bold leading-normal text-[#208ce5] 2xl:text-5xl 2xl:leading-normal">
+        <h1 className="text-3xl font-bold leading-normal text-[#208ce5] 2xl:text-5xl 2xl:leading-normal">
           {error404Data.line1}
-        </p>
-        <p className="mb-4 text-lg font-semibold leading-normal 2xl:mb-6 2xl:text-2xl 2xl:leading-normal">
+        </h1>
+        <h1 className="mb-4 text-lg font-semibold leading-normal 2xl:mb-6 2xl:text-2xl 2xl:leading-normal">
           {error404Data.line2}
-        </p>
+        </h1>
         <Link href="/">
           <button className="rounded-xl bg-[#208ce5] px-5 py-1 text-lg font-semibold text-white duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[white] hover:text-[#208ce5] 2xl:py-2 2xl:px-8 2xl:text-2xl">
             {error404Data.buttonText}

@@ -28,8 +28,11 @@ const NavBar = () => {
   return (
     <nav
       ref={navBarRef}
-      className="relative flex h-20 w-screen items-center justify-between px-6"
+      className="relative flex h-20 w-full items-center justify-between px-6"
     >
+      {/* Nav Title */}
+      <h1 className="hidden">Navigation Bar</h1>
+
       {/* Dewo Logo */}
       <Link className="h-10 w-10" href="/">
         <button aria-label="Dewo's Logo" className="h-10 w-10">
@@ -39,7 +42,7 @@ const NavBar = () => {
 
       {/* Navigation */}
       <ul
-        className={`absolute top-20 left-0 z-50 flex w-screen flex-col gap-y-4 bg-[#1F2133] py-5 px-6 duration-700 ease-in-out md:static md:ml-20 md:translate-x-0 md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:transition-none lg:ml-48 ${
+        className={`absolute top-20 left-0 z-50 flex w-full flex-col gap-y-4 bg-[#1F2133] py-5 px-6 duration-700 ease-in-out md:static md:ml-20 md:translate-x-0 md:flex-row md:gap-x-14 md:bg-[#1A1C2B] md:transition-none lg:ml-48 ${
           expandNav ? "translate-x-0" : "-translate-x-full"
         }`}
       >

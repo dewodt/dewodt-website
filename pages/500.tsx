@@ -31,16 +31,16 @@ const Custom500: NextPage<{ error500Data: error500Data }> = ({
         linkPreviewImage={error500Data.imageLinkPreview.url}
       />
       <div
-        className={`flex h-[100vh] flex-col items-center justify-center px-3 text-center duration-1000 ease-in-out ${
+        className={`absolute top-0 left-0 right-0 flex h-full w-full flex-col items-center justify-center px-3 text-center duration-1000 ease-in-out ${
           mount ? "opacity-100" : "opacity-0"
         }`}
       >
-        <p className="text-3xl font-bold leading-normal text-[#208ce5] 2xl:text-5xl 2xl:leading-normal">
+        <h1 className="text-3xl font-bold leading-normal text-[#208ce5] 2xl:text-5xl 2xl:leading-normal">
           {error500Data.line1}
-        </p>
-        <p className="mb-4 text-lg font-semibold leading-normal 2xl:mb-6 2xl:text-2xl 2xl:leading-normal">
+        </h1>
+        <h1 className="mb-4 text-lg font-semibold leading-normal 2xl:mb-6 2xl:text-2xl 2xl:leading-normal">
           {error500Data.line2}
-        </p>
+        </h1>
       </div>
     </>
   );
