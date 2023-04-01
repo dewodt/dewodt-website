@@ -14,7 +14,11 @@ const SearchBox = ({ searchValue, handleChange, handleReset }: SearchBox) => {
       <div className="mx-3 h-1/2">
         <SearchIcon style="h-full fill-[#1A1C2B]" />
       </div>
-      <input className="w-full bg-white text-lg text-[#1A1C2B] focus:outline-none 2xl:text-xl" placeholder="Search Posts" value={searchValue} onChange={handleChange}
+      <input
+        className="w-full bg-white text-lg text-[#1A1C2B] focus:outline-none 2xl:text-xl"
+        placeholder="Search Posts"
+        value={searchValue}
+        onChange={handleChange}
       />
       <button
         aria-label="Clear Button"
