@@ -107,7 +107,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const allPostsIds: ArticleID[] = res.data.allPostsContents;
 
-  const postIds = allPostsIds.map((item) => {
+  const postIds = allPostsIds?.map((item) => {
     return {
       params: {
         id: item.id,
