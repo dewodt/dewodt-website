@@ -115,9 +115,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
   });
 
-  console.log(allPostsIds)
-  console.log(postIds)
-  console.log("Tesaja")
+  console.log(allPostsIds);
+  console.log(postIds);
+  console.log("Tesaja");
 
   return {
     paths: postIds,
