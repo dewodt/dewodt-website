@@ -16,6 +16,7 @@ jobs:
     env : 
       NEXT_DATOCMS_API_TOKEN: ${{secrets.NEXT_DATOCMS_API_TOKEN}}
       NEXT_DATOCMS_REVALIDATE_TOKEN : ${{secrets.NEXT_DATOCMS_REVALIDATE_TOKEN}}
+      CI: false
 
     name : Build the Site
     runs-on : ubuntu-latest
