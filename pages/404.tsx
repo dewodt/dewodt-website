@@ -33,7 +33,7 @@ const Custom404: NextPage<{ error404Data: error404Data }> = ({
         linkPreviewImage={error404Data.imageLinkPreview.url}
       />
       <div
-        className={`flex h-[100vh] flex-col items-center justify-center px-3 text-center duration-1000 ease-in-out ${
+        className={`absolute top-0 left-0 right-0 flex h-full w-full flex-col items-center justify-center px-3 text-center duration-1000 ease-in-out ${
           mount ? "opacity-100" : "opacity-0"
         }`}
       >
