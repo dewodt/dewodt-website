@@ -53,7 +53,7 @@ const Posts: NextPage<{
         linkPreviewImage={postsPage.imageLinkPreview.url}
       />
       <Layout>
-        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center py-12 pt-6">
+        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-full flex-col items-center py-12 pt-6">
           {/* Search Box and Search Count */}
           <section
             className={`mb-8 flex flex-col items-center gap-y-4 duration-1000 ease-out ${
