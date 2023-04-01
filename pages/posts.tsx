@@ -55,13 +55,14 @@ const Posts: NextPage<{
       <Layout>
         <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center py-12 pt-6">
           {/* Search Box and Search Count */}
-          <div
+          <section
             className={`mb-8 flex flex-col items-center gap-y-4 duration-1000 ease-out ${
               mount
                 ? "translate-y-0 opacity-100"
                 : "-translate-y-full opacity-0"
             }`}
           >
+            <h1 className="hidden">Search Box & Count</h1>
             <SearchBox
               searchValue={searchValue}
               handleChange={(e: ChangeEvent<HTMLInputElement>) => {
@@ -100,10 +101,11 @@ const Posts: NextPage<{
             >
               {`${filteredData.length} search result was found`}
             </div>
-          </div>
+          </section>
 
           {/* Posts */}
-          <div className="grid justify-center gap-x-14 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          <section className="grid justify-center gap-x-14 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            <h1 className="hidden">Posts Articles</h1>
             {filteredData.map((item, index) => (
               <div
                 key={item.id}
@@ -116,7 +118,7 @@ const Posts: NextPage<{
                 <Card data={item} index={index} />
               </div>
             ))}
-          </div>
+          </section>
         </div>
       </Layout>
     </>
