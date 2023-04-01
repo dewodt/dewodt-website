@@ -30,6 +30,9 @@ const NavBar = () => {
       ref={navBarRef}
       className="relative flex h-20 w-screen items-center justify-between px-6"
     >
+      {/* Nav Title */}
+      <h1 className="hidden">Navigation Bar</h1>
+
       {/* Dewo Logo */}
       <Link className="h-10 w-10" href="/">
         <button aria-label="Dewo's Logo" className="h-10 w-10">

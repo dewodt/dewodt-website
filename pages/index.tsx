@@ -45,7 +45,7 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
         linkPreviewImage={homeData.imageLinkPreview.url}
       />
       <Layout>
-        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center justify-center gap-y-6 py-12 sm:flex-row sm:gap-x-8 lg:gap-x-12">
+        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center justify-center gap-y-6 overflow-hidden py-12 sm:flex-row sm:gap-x-8 lg:gap-x-12">
           {/* My Photo */}
           <Image
             src={homeData.photo.url}
@@ -61,9 +61,9 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
             sizes="(max-width: 1024px) 400px, 600px"
           />
 
-          {/* My Description */}
           <div className="block">
-            <div className="mb-6 w-[325px] text-center text-lg font-semibold leading-relaxed sm:text-left 2xl:mb-8 2xl:w-[430px] 2xl:text-2xl 2xl:leading-relaxed">
+            {/* Description Section */}
+            <section className="mb-6 w-[325px] text-center text-lg font-semibold leading-relaxed sm:text-left 2xl:mb-8 2xl:w-[430px] 2xl:text-2xl 2xl:leading-relaxed">
               <div
                 className={`mb-6 duration-1000 ease-out 2xl:mb-8 ${
                   mount
@@ -71,7 +71,7 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
                     : "translate-y-full opacity-0 sm:translate-x-full sm:translate-y-0"
                 }`}
               >
-                <div className="text-3xl font-bold md:mb-1 2xl:text-[2.75rem] 2xl:leading-none">
+                <h1 className="text-3xl font-bold md:mb-1 2xl:text-[2.75rem] 2xl:leading-none">
                   <Typewriter
                     options={{
                       autoStart: true,
@@ -86,13 +86,13 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
                         .start();
                     }}
                   />
-                </div>
-                <div>
+                </h1>
+                <h2>
                   My full name is{" "}
                   <span className="text-[#208ce5]">Dewantoro Triatmojo.</span>
-                </div>
+                </h2>
               </div>
-              <div
+              <h2
                 className={`mb-6 delay-200 duration-1000 ease-out 2xl:mb-8 ${
                   mount
                     ? "translate-y-0 translate-x-0 opacity-100"
@@ -105,8 +105,8 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
                   {" "}
                   Bandung Institute of Technology.
                 </span>
-              </div>
-              <div
+              </h2>
+              <h2
                 className={`delay-[400ms] duration-1000 ease-out ${
                   mount
                     ? "translate-y-0 translate-x-0 opacity-100"
@@ -116,17 +116,20 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
                 Interested in{" "}
                 <span className="text-[#208ce5]">Software Engineering </span>and{" "}
                 <span className="text-[#208ce5]">Artificial Intelligence.</span>
-              </div>
-            </div>
+              </h2>
+            </section>
 
-            {/* My Social Media */}
-            <div
+            {/* Social Media Section */}
+            <section
               className={`flex flex-row justify-center gap-x-6 delay-[600ms] duration-1000 ease-out 2xl:gap-x-10 ${
                 mount
                   ? "translate-y-0 translate-x-0 opacity-100"
                   : "translate-y-full opacity-0 sm:translate-x-full sm:translate-y-0"
               }`}
             >
+              {/* Section Title */}
+              <h1 className="hidden">Social Media</h1>
+
               <Link href={homeData.github}>
                 <button
                   aria-label="GitHub Button"
@@ -159,7 +162,7 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
                   <InstagramIcon style="w-8 fill-[white] group-hover:fill-[#208ce5] 2xl:w-9 duration-300 ease-in-out" />
                 </button>
               </Link>
-            </div>
+            </section>
           </div>
         </div>
       </Layout>

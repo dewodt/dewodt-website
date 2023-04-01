@@ -41,10 +41,10 @@ const Article: NextPage<{ articleData: ArticleData }> = ({ articleData }) => {
       />
       <Layout>
         <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center pt-6 pb-12">
-          <div className="w-[80vw] sm:w-[60vw] lg:w-[50vw] 2xl:w-[40vw]">
-            <p className="mb-2 text-3xl font-bold text-[#208ce5] 2xl:text-4xl">
+          <article className="w-[80vw] sm:w-[60vw] lg:w-[50vw] 2xl:w-[40vw]">
+            <h1 className="mb-2 text-3xl font-bold text-[#208ce5] 2xl:text-4xl">
               {articleData.title}
-            </p>
+            </h1>
             <p className="mb-2 text-base font-semibold 2xl:text-lg">
               {new Date(articleData._firstPublishedAt).toLocaleString("en-UK", {
                 dateStyle: "long",
@@ -69,10 +69,10 @@ const Article: NextPage<{ articleData: ArticleData }> = ({ articleData }) => {
               priority={true}
               sizes="(max-width: 640px) 80vw, (max-width: 1024px) 60vw, (max-width: 1536px) 50vw, 40vw"
             />
-            <div className="text-justify text-lg leading-relaxed 2xl:text-xl 2xl:leading-relaxed">
+            <p className="text-justify text-lg leading-relaxed 2xl:text-xl 2xl:leading-relaxed">
               <StructuredText data={articleData.content} />
-            </div>
-          </div>
+            </p>
+          </article>
         </div>
       </Layout>
     </>
