@@ -45,7 +45,7 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
         linkPreviewImage={homeData.imageLinkPreview.url}
       />
       <Layout>
-        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-screen flex-col items-center justify-center gap-y-6 overflow-hidden py-12 sm:flex-row sm:gap-x-8 lg:gap-x-12">
+        <div className="flex h-fit min-h-[calc(100vh-5rem)] w-full overflow-hidden flex-col items-center justify-center gap-y-6 py-12 sm:flex-row sm:gap-x-8 lg:gap-x-12">
           {/* My Photo */}
           <Image
             src={homeData.photo.url}
