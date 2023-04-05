@@ -46,11 +46,11 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
       />
       <Layout>
         <div className="absolute top-20 left-0 right-0 flex min-h-[calc(100%-5rem)] w-full flex-col items-center justify-center gap-y-6 overflow-hidden py-12 sm:flex-row sm:gap-x-8 lg:gap-x-12">
-            {/* My Photo */}
+          {/* My Photo */}
           <Image
             src={homeData.photo.url}
             alt={homeData.photo.alt}
-              width={homeData.photo.width}
+            width={homeData.photo.width}
             height={homeData.photo.height}
             className={`w-64 rounded-[50%] border-8 border-solid border-[#208ce5] duration-1000 ease-out md:w-72 2xl:w-96 ${
               mount
