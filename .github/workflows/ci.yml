@@ -32,7 +32,7 @@ jobs:
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
-          auto_fix: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           # eslint: true
           # eslint_args: "--no-error-on-unmatched-pattern"
           # eslint_auto_fix: true
