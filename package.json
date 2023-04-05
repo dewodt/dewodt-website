@@ -15,7 +15,7 @@
     "datocms-structured-text-to-plain-text": "^2.0.4",
     "next": "13.0.6",
     "react": "18.2.0",
-    "react-datocms": "^4.0.7",
+    "react-datocms": "^4.0.10",
     "react-dom": "18.2.0",
     "react-lines-ellipsis": "^0.15.3",
     "typewriter-effect": "^2.19.0"
