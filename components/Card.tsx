@@ -25,13 +25,13 @@ const Card = ({ data, index }: { data: postsContent; index: number }) => {
     <Link href={`posts/${data.id}`}>
       <article className="h-fit w-72 rounded-3xl bg-[white] duration-300 ease-in-out lg:hover:-translate-y-1 lg:hover:scale-105 2xl:w-96">
         <Image
-          className="h-[144px] w-full rounded-t-3xl object-cover object-center 2xl:h-[192px]"
+            className="h-[144px] w-full rounded-t-3xl object-cover object-center 2xl:h-[192px]"
           priority={index < 6 ? true : false}
-          src={data.image.url}
+            src={data.image.url}
           alt={data.image.alt}
-          width={data.image.width}
+            width={data.image.width}
           height={data.image.height}
-          sizes="(max-width: 1536px) 432px, 576px"
+            sizes="(max-width: 1536px) 432px, 576px"
         />
         <div className="flex flex-col gap-y-2 px-4 pb-4 pt-3">
           <div className="flex flex-row flex-wrap justify-start gap-x-3 gap-y-2">

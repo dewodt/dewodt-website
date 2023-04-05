@@ -19,7 +19,7 @@ interface ArticleData {
   content: any;
   tags: string[];
   image: {
-    id: string;
+    id: string
     url: string;
     alt: string;
     width: number;
