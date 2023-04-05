@@ -34,5 +34,6 @@ jobs:
         with:
           eslint: true
           eslint_auto_fix: true
+          eslint_args: "--no-error-on-unmatched-pattern"
           prettier: true
           prettier_auto_fix: true
