@@ -32,8 +32,7 @@ jobs:
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
-          # eslint: true
-          # eslint_args: "--no-error-on-unmatched-pattern"
-          # eslint_auto_fix: true
+          eslint: true
+          eslint_auto_fix: true
           prettier: true
           prettier_auto_fix: true
