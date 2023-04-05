@@ -24,7 +24,7 @@ const PageHead = ({
       <meta name="keywords" content={pageTag.join(", ")} />
       <meta name="author" content="Dewantoro Triatmojo" />
 
-      {/* Social Media */}
+        {/* Social Media */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://dewodt.com/" />
       <meta property="og:title" content={pageTitle} />
