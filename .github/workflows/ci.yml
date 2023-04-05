@@ -18,7 +18,10 @@ jobs:
         with:
           # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
-
+      
+      - name: Install Node.js dependencies
+        run: npm install --frozen-lockfile
+      
       - name: Prettify code
         uses: creyD/prettier_action@v4.3
         with:
