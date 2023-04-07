@@ -44,7 +44,7 @@ const Article: NextPage<{ articleData: ArticleData }> = ({ articleData }) => {
         linkPreviewImage={articleData.image.url}
       />
       <Layout>
-        <div className="absolute top-20 left-0 right-0 flex min-h-[calc(100vh-5rem)] w-full flex-col items-center pt-6 pb-12">
+        <main className="flex min-h-[calc(100vh-5rem)] w-full flex-col items-center pt-6 pb-12">
           <article className="w-[80vw] sm:w-[60vw] lg:w-[50vw] 2xl:w-[40vw]">
             <h1 className="mb-2 text-3xl font-bold text-[#208ce5] 2xl:text-4xl">
               {articleData.title}
@@ -77,7 +77,7 @@ const Article: NextPage<{ articleData: ArticleData }> = ({ articleData }) => {
               <StructuredText data={articleData.content} />
             </p>
           </article>
-        </div>
+        </main>
       </Layout>
     </>
   );

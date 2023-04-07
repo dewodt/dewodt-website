@@ -30,7 +30,7 @@ const Custom500: NextPage<{ error500Data: error500Data }> = ({
         pageTag={error500Data.pageTags}
         linkPreviewImage={error500Data.imageLinkPreview.url}
       />
-      <div
+      <main
         className={`absolute top-0 left-0 right-0 flex h-full w-full flex-col items-center justify-center px-3 text-center duration-1000 ease-in-out ${
           mount ? "opacity-100" : "opacity-0"
         }`}
@@ -41,7 +41,7 @@ const Custom500: NextPage<{ error500Data: error500Data }> = ({
         <h1 className="mb-4 text-lg font-semibold leading-normal 2xl:mb-6 2xl:text-2xl 2xl:leading-normal">
           {error500Data.line2}
         </h1>
-      </div>
+      </main>
     </>
   );
 };

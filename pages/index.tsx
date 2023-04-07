@@ -45,7 +45,7 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
         linkPreviewImage={homeData.imageLinkPreview.url}
       />
       <Layout>
-        <div className="absolute top-20 left-0 right-0 flex min-h-[calc(100%-5rem)] w-full flex-col items-center justify-center gap-y-6 overflow-hidden py-12 sm:flex-row sm:gap-x-8 lg:gap-x-12">
+        <main className="flex min-h-[calc(100%-5rem)] w-full flex-col items-center justify-center gap-y-6 overflow-hidden py-12 sm:flex-row sm:gap-x-8 lg:gap-x-12">
           {/* My Photo */}
           <Image
             src={homeData.photo.url}
@@ -164,7 +164,7 @@ const Home: NextPage<{ homeData: homeData }> = ({ homeData }) => {
               </Link>
             </section>
           </div>
-        </div>
+        </main>
       </Layout>
     </>
   );
