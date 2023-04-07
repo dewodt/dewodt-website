@@ -54,7 +54,7 @@ const Posts: NextPage<{
         linkPreviewImage={postsPage.imageLinkPreview.url}
       />
       <Layout>
-        <div className="absolute top-20 left-0 right-0 flex min-h-[calc(100%-5rem)] w-full flex-col items-center py-12 pt-6">
+        <main className="flex min-h-[calc(100%-5rem)] w-full flex-col items-center py-12 pt-6">
           {/* Search Box and Search Count */}
           <section
             className={`mb-8 flex flex-col items-center gap-y-4 duration-1000 ease-out ${
@@ -120,7 +120,7 @@ const Posts: NextPage<{
               </div>
             ))}
           </section>
-        </div>
+        </main>
       </Layout>
     </>
   );

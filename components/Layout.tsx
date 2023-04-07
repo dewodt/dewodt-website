@@ -3,8 +3,10 @@ import NavBar from "./NavBar";
 const Layout = ({ children }: { children: JSX.Element }) => {
   return (
     <>
-      <NavBar />
-      <main>{children}</main>
+      <div className="absolute inset-0 h-full w-full">
+        <NavBar />
+        <>{children}</>
+      </div>
     </>
   );
 };

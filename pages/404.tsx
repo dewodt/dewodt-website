@@ -32,7 +32,7 @@ const Custom404: NextPage<{ error404Data: error404Data }> = ({
         pageTag={error404Data.pageTags}
         linkPreviewImage={error404Data.imageLinkPreview.url}
       />
-      <div
+      <main
         className={`absolute top-0 left-0 right-0 flex h-full w-full flex-col items-center justify-center px-3 text-center duration-1000 ease-in-out ${
           mount ? "opacity-100" : "opacity-0"
         }`}
@@ -48,7 +48,7 @@ const Custom404: NextPage<{ error404Data: error404Data }> = ({
             {error404Data.buttonText}
           </button>
         </Link>
-      </div>
+      </main>
     </>
   );
 };
