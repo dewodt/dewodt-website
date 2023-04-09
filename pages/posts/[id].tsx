@@ -8,6 +8,7 @@ import type {
   GetStaticProps,
   GetStaticPropsContext,
 } from "next";
+import type { StructuredText as StructuredTextType } from "datocms-structured-text-utils";
 
 interface ArticleID {
   id: string;
@@ -16,7 +17,7 @@ interface ArticleID {
 interface ArticleData {
   id: string;
   title: string;
-  content: any;
+  content: StructuredTextType;
   tags: string[];
   image: {
     id: string;

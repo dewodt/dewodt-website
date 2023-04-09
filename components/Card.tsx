@@ -2,11 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import LinesEllipsis from "react-lines-ellipsis";
 import { render } from "datocms-structured-text-to-plain-text";
+import type { StructuredText as StructuredTextType } from "datocms-structured-text-utils";
 
 interface postsContent {
   id: string;
   title: string;
-  content: any;
+  content: StructuredTextType;
   tags: string[];
   image: {
     id: string;
@@ -19,8 +20,6 @@ interface postsContent {
 }
 
 const Card = ({ data, index }: { data: postsContent; index: number }) => {
-  const contentPreview = render(data.content) as string | undefined;
-
   return (
     <Link href={`posts/${data.id}`}>
       <article className="h-fit w-72 rounded-3xl bg-[white] duration-300 ease-in-out lg:hover:-translate-y-1 lg:hover:scale-105 2xl:w-96">
@@ -56,7 +55,7 @@ const Card = ({ data, index }: { data: postsContent; index: number }) => {
           </div>
           <p>
             <LinesEllipsis
-              text={contentPreview}
+              text={render(data.content) as string}
               maxLine="3"
               ellipsis="..."
               className="text-justify text-sm font-normal leading-tight text-[#1A1C2B] 2xl:text-base 2xl:leading-tight"

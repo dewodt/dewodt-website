@@ -7,11 +7,12 @@ import type { ChangeEvent } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import type { GetStaticProps, NextPage } from "next";
+import type { StructuredText as StructuredTextType } from "datocms-structured-text-utils";
 
 interface postsContent {
   id: string;
   title: string;
-  content: any;
+  content: StructuredTextType;
   tags: string[];
   image: {
     id: string;
@@ -75,7 +76,7 @@ const Posts: NextPage<{
                 if (newInputValue === "") {
                   setFilteredData(postsContent);
                 } else {
-                  const newData = postsContent.filter((item: any) => {
+                  const newData = postsContent.filter((item) => {
                     const itemTitle = item.title.toLowerCase();
                     const itemDate = new Date(item._firstPublishedAt)
                       .toLocaleString("en-UK", { dateStyle: "long" })
